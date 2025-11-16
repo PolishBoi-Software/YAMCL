@@ -197,14 +197,14 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(OutDir)*" "C:\Users\PolishBoiYT\Documents\YAMCL\bin" /E /I /Y /C
+    <PostBuildEvent>if not exist "C:\Users\PolishBoiYT\Documents\YAMCL\bin" mkdir "C:\Users\PolishBoiYT\Documents\YAMCL\bin"
+xcopy /E /I /Y /Q "$(ProjectDir)bin\$(ConfigurationName)\*.*" "C:\Users\PolishBoiYT\Documents\YAMCL\bin\"
 del /Q /F "C:\Users\PolishBoiYT\Documents\YAMCL\bin\*.application"
 del /Q /F "C:\Users\PolishBoiYT\Documents\YAMCL\bin\*.pdb"
-xcopy "$(ProjectDir)*" "%25USERPROFILE%25\Documents\YAMCL\src" /E /I /Y
-rmdir /S /Q "C:\Users\PolishBoiYT\Documents\YAMCL\src\bin"
-rmdir /S /Q "C:\Users\PolishBoiYT\Documents\YAMCL\src\obj"
-rmdir /S /Q "C:\Users\PolishBoiYT\Documents\YAMCL\src\.git"
-rmdir /S /Q "C:\Users\PolishBoiYT\Documents\YAMCL\src\.vs"
-</PostBuildEvent>
+xcopy /E /I /Y "$(ProjectDir)" "%25USERPROFILE%25\Documents\YAMCL\src\"
+rmdir /S /Q "%25USERPROFILE%25\Documents\YAMCL\src\bin"
+rmdir /S /Q "%25USERPROFILE%25\Documents\YAMCL\src\obj"
+rmdir /S /Q "%25USERPROFILE%25\Documents\YAMCL\src\.git"
+rmdir /S /Q "%25USERPROFILE%25\Documents\YAMCL\src\.vs"</PostBuildEvent>
   </PropertyGroup>
 </Project>
