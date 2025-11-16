@@ -131,6 +131,10 @@ namespace YAMCL
 
         private async void MainForm_Load(object sender, EventArgs e)
         {
+            AutoUpdater.InstalledVersion = new Version(1, 0, 1);
+            AutoUpdater.UpdateMode = Mode.Normal;
+            AutoUpdater.OpenDownloadPage = true;
+
             LoadConfigFile();
             LoadInstances();
 
@@ -146,9 +150,6 @@ namespace YAMCL
             {
                 AutoUpdater.Start("https://github.com/PolishBoi-Software/Yet-Another-Minecraft-Launcher/blob/main/version.xml");
             }
-
-            AutoUpdater.UpdateMode = Mode.Normal;
-            AutoUpdater.OpenDownloadPage = true;
         }
 
         private void closeBtn_Click(object sender, EventArgs e)
