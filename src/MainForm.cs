@@ -133,7 +133,7 @@ namespace YAMCL
         private async void MainForm_Load(object sender, EventArgs e)
         {
             AutoUpdater.InstalledVersion = Assembly.GetExecutingAssembly().GetName().Version;
-            AutoUpdater.UpdateMode = Mode.Normal;
+            AutoUpdater.UpdateMode = Mode.ForcedDownload;
             AutoUpdater.OpenDownloadPage = true;
 
             LoadConfigFile();
