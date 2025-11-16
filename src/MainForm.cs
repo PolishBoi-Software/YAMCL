@@ -132,7 +132,10 @@ namespace YAMCL
 
         private async void MainForm_Load(object sender, EventArgs e)
         {
-            AutoUpdater.InstalledVersion = new Version(1, 0, 0);
+            #if DEBUG
+                AutoUpdater.InstalledVersion = new Version(1, 0, 0);
+            #endif
+
             AutoUpdater.UpdateMode = Mode.ForcedDownload;
             AutoUpdater.AppTitle = "YAMCL";
             AutoUpdater.OpenDownloadPage = true;
