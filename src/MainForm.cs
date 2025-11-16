@@ -1,18 +1,19 @@
-﻿using CmlLib.Core;
+﻿using AutoUpdaterDotNET;
+using ByteSizeLib;
+using CmlLib.Core;
 using CmlLib.Core.Auth;
 using CmlLib.Core.Auth.Microsoft;
 using CmlLib.Core.ProcessBuilder;
 using System;
-using ByteSizeLib;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using AutoUpdaterDotNET;
 using System.Linq;
 using System.Media;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -131,6 +132,7 @@ namespace YAMCL
 
         private async void MainForm_Load(object sender, EventArgs e)
         {
+            AutoUpdater.InstalledVersion = Assembly.GetExecutingAssembly().GetName().Version;
             AutoUpdater.UpdateMode = Mode.Normal;
             AutoUpdater.OpenDownloadPage = true;
 
@@ -147,7 +149,7 @@ namespace YAMCL
 
             if (Program.frm.config["autoUpdate"])
             {
-                AutoUpdater.Start("https://raw.githubusercontent.com/PolishBoi-Software/Yet-Another-Minecraft-Launcher/main/version.xml\r\n");
+                AutoUpdater.Start("https://raw.githubusercontent.com/PolishBoi-Software/Yet-Another-Minecraft-Launcher/main/version.xml");
             }
         }
 
