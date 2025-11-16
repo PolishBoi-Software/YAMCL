@@ -134,6 +134,7 @@ namespace YAMCL
         {
             AutoUpdater.InstalledVersion = Assembly.GetExecutingAssembly().GetName().Version;
             AutoUpdater.UpdateMode = Mode.ForcedDownload;
+            AutoUpdater.AppTitle = "YAMCL";
             AutoUpdater.OpenDownloadPage = true;
 
             LoadConfigFile();
