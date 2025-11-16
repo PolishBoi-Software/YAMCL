@@ -16,7 +16,7 @@ namespace YAMCL
         {
             InitializeComponent();
             autoSignInCheck.Checked = Program.frm.config["autoSignIn"];
-            autoSignInCheck.Checked = Program.frm.config["autoUpdate"];
+            autoUpdateCheck.Checked = Program.frm.config["autoUpdate"];
         }
 
         private void okBtn_Click(object sender, EventArgs e)
