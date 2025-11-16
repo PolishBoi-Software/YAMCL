@@ -10,6 +10,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using AutoUpdaterDotNET;
 using System.Linq;
 using System.Media;
 using System.Text;
@@ -135,11 +136,19 @@ namespace YAMCL
 
             loginHandler = JELoginHandlerBuilder.BuildDefault();
             
-            if (config["autoSignIn"] == true)
+            if (config["autoSignIn"])
             {
                 session = await loginHandler.Authenticate();
                 OnSignIn();
             }
+
+            if (Program.frm.config["autoUpdate"])
+            {
+                AutoUpdater.Start("https://github.com/PolishBoi-Software/Yet-Another-Minecraft-Launcher/blob/main/version.xml");
+            }
+
+            AutoUpdater.UpdateMode = Mode.Normal;
+            AutoUpdater.OpenDownloadPage = true;
         }
 
         private void closeBtn_Click(object sender, EventArgs e)

@@ -37,6 +37,9 @@
             this.formRounder = new CuoreUI.Components.cuiFormRounder();
             this.cancelBtn = new CuoreUI.Controls.cuiButton();
             this.formAnimator = new CuoreUI.Components.cuiFormAnimator(this.components);
+            this.autoUpdateLbl = new CuoreUI.Controls.cuiLabel();
+            this.autoUpdateCheck = new CuoreUI.Controls.cuiSwitch();
+            this.autoUpdateLblTooltip = new CuoreUI.Components.cuiTooltipHover(this.components);
             this.SuspendLayout();
             // 
             // okBtn
@@ -186,12 +189,56 @@
             this.formAnimator.TargetForm = this;
             this.formAnimator.TargetOpacity = 1D;
             // 
+            // autoUpdateLbl
+            // 
+            this.autoUpdateLbl.Content = "Auto\\ Update";
+            this.autoUpdateLbl.Font = new System.Drawing.Font("Inter Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.autoUpdateLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.autoUpdateLbl.HorizontalAlignment = System.Drawing.StringAlignment.Near;
+            this.autoUpdateLbl.Location = new System.Drawing.Point(66, 54);
+            this.autoUpdateLbl.Name = "autoUpdateLbl";
+            this.autoUpdateLbl.Size = new System.Drawing.Size(210, 20);
+            this.autoUpdateLbl.TabIndex = 16;
+            this.autoUpdateLbl.VerticalAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // autoUpdateCheck
+            // 
+            this.autoUpdateCheck.Checked = false;
+            this.autoUpdateCheck.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(180)))), ((int)(((byte)(250)))));
+            this.autoUpdateCheck.CheckedForeground = System.Drawing.Color.White;
+            this.autoUpdateCheck.CheckedOutlineColor = System.Drawing.Color.Empty;
+            this.autoUpdateCheck.CheckedSymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.autoUpdateCheck.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.autoUpdateCheck.Location = new System.Drawing.Point(12, 51);
+            this.autoUpdateCheck.MinimumSize = new System.Drawing.Size(12, 8);
+            this.autoUpdateCheck.Name = "autoUpdateCheck";
+            this.autoUpdateCheck.OutlineThickness = 1F;
+            this.autoUpdateCheck.ShowSymbols = false;
+            this.autoUpdateCheck.Size = new System.Drawing.Size(48, 26);
+            this.autoUpdateCheck.TabIndex = 15;
+            this.autoUpdateCheck.ThumbSizeModifier = new System.Drawing.Size(0, 0);
+            this.autoUpdateCheck.UncheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.autoUpdateCheck.UncheckedForeground = System.Drawing.Color.White;
+            this.autoUpdateCheck.UncheckedOutlineColor = System.Drawing.Color.Empty;
+            this.autoUpdateCheck.UncheckedSymbolColor = System.Drawing.Color.Gray;
+            // 
+            // autoUpdateLblTooltip
+            // 
+            this.autoUpdateLblTooltip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(37)))));
+            this.autoUpdateLblTooltip.Content = "Automatically checks for updates on startup.";
+            this.autoUpdateLblTooltip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.autoUpdateLblTooltip.TargetControl = this.autoUpdateLbl;
+            this.autoUpdateLblTooltip.TooltipPosition = CuoreUI.Components.cuiTooltipHover.Position.Top;
+            this.autoUpdateLblTooltip.TooltipPositionOffset = new System.Drawing.Size(0, 0);
+            // 
             // SettingsDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(37)))));
             this.ClientSize = new System.Drawing.Size(737, 398);
+            this.Controls.Add(this.autoUpdateLbl);
+            this.Controls.Add(this.autoUpdateCheck);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.autoSignInLbl);
             this.Controls.Add(this.autoSignInCheck);
@@ -199,7 +246,7 @@
             this.Font = new System.Drawing.Font("Inter", 9F);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SettingsDialog";
@@ -220,5 +267,8 @@
         private CuoreUI.Components.cuiFormRounder formRounder;
         private CuoreUI.Controls.cuiButton cancelBtn;
         private CuoreUI.Components.cuiFormAnimator formAnimator;
+        private CuoreUI.Controls.cuiLabel autoUpdateLbl;
+        private CuoreUI.Controls.cuiSwitch autoUpdateCheck;
+        private CuoreUI.Components.cuiTooltipHover autoUpdateLblTooltip;
     }
 }

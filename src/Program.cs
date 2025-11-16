@@ -26,7 +26,7 @@ namespace YAMCL
                     Directory.CreateDirectory(instancesDirPath);
 
                 if (!File.Exists(configFilePath))
-                    File.WriteAllText(configFilePath, "# yes = true\n# no = false\n# maybe = 50/50\n\nautoSignIn = yes");
+                    File.WriteAllText(configFilePath, "# yes = true\n# no = false\n# maybe = 50/50\n\nautoSignIn = yes\nautoUpdate = yes");
             }
             catch { }
         }

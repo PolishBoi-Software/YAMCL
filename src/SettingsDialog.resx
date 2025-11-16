@@ -129,4 +129,7 @@
   <metadata name="formAnimator.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>414, 22</value>
   </metadata>
+  <metadata name="autoUpdateLblTooltip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>544, 22</value>
+  </metadata>
 </root>
