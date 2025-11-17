@@ -258,11 +258,14 @@ namespace YAMCL
 
                 launcher.FileProgressChanged += (s, ev) =>
                 {
-                    this.Invoke(new Action(() => progBar.Value = ev.ProgressedTasks));
-                    this.Invoke(new Action(() => taskbarState.ProgressValue = ev.ProgressedTasks));
-                    this.Invoke(new Action(() => progBar.MaxValue = ev.TotalTasks));
-                    this.Invoke(new Action(() => taskbarState.MaxValue = ev.TotalTasks));
-                    this.Invoke(new Action(() => taskLbl.Content = ev.Name));
+                    this.Invoke(new Action(() =>
+                    {
+                        progBar.Value = ev.ProgressedTasks;
+                        taskbarState.ProgressValue = ev.ProgressedTasks;
+                        progBar.MaxValue = ev.TotalTasks;
+                        taskbarState.MaxValue = ev.TotalTasks;
+                        taskLbl.Content = ev.Name;
+                    }));
                 };
 
                 launcher.ByteProgressChanged += (s, ev) =>
