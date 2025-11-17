@@ -54,6 +54,7 @@
             this.formAnimator = new CuoreUI.Components.cuiFormAnimator(this.components);
             this.settingsBtn = new CuoreUI.Controls.cuiButton();
             this.killBtn = new CuoreUI.Controls.cuiButton();
+            this.addModBtn = new CuoreUI.Controls.cuiButton();
             ((System.ComponentModel.ISupportInitialize)(this.playerHead)).BeginInit();
             this.SuspendLayout();
             // 
@@ -163,7 +164,7 @@
             this.launchBtn.ImageAutoCenter = true;
             this.launchBtn.ImageExpand = new System.Drawing.Point(0, 0);
             this.launchBtn.ImageOffset = new System.Drawing.Point(0, 0);
-            this.launchBtn.Location = new System.Drawing.Point(965, 501);
+            this.launchBtn.Location = new System.Drawing.Point(965, 536);
             this.launchBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.launchBtn.Name = "launchBtn";
             this.launchBtn.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
@@ -207,7 +208,7 @@
             this.instanceList.OutlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.instanceList.Rounding = new System.Windows.Forms.Padding(8);
             this.instanceList.SelectedForegroundColor = System.Drawing.Color.White;
-            this.instanceList.Size = new System.Drawing.Size(946, 442);
+            this.instanceList.Size = new System.Drawing.Size(946, 476);
             this.instanceList.TabIndex = 6;
             // 
             // cuiResizeGrip1
@@ -217,7 +218,8 @@
             this.cuiResizeGrip1.GripColor = System.Drawing.Color.Gray;
             this.cuiResizeGrip1.GripSize = 2;
             this.cuiResizeGrip1.GripTexture = true;
-            this.cuiResizeGrip1.Location = new System.Drawing.Point(1140, 566);
+            this.cuiResizeGrip1.Location = new System.Drawing.Point(1140, 601);
+            this.cuiResizeGrip1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cuiResizeGrip1.Name = "cuiResizeGrip1";
             this.cuiResizeGrip1.Size = new System.Drawing.Size(16, 14);
             this.cuiResizeGrip1.SkipBottomRightSquare = false;
@@ -532,7 +534,7 @@
             // 
             // settingsBtn
             // 
-            this.settingsBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.settingsBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.settingsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
             this.settingsBtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.settingsBtn.CheckButton = false;
@@ -554,7 +556,7 @@
             this.settingsBtn.ImageAutoCenter = true;
             this.settingsBtn.ImageExpand = new System.Drawing.Point(0, 0);
             this.settingsBtn.ImageOffset = new System.Drawing.Point(0, 0);
-            this.settingsBtn.Location = new System.Drawing.Point(965, 260);
+            this.settingsBtn.Location = new System.Drawing.Point(965, 398);
             this.settingsBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.settingsBtn.Name = "settingsBtn";
             this.settingsBtn.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
@@ -597,7 +599,7 @@
             this.killBtn.ImageAutoCenter = true;
             this.killBtn.ImageExpand = new System.Drawing.Point(0, 0);
             this.killBtn.ImageOffset = new System.Drawing.Point(0, 0);
-            this.killBtn.Location = new System.Drawing.Point(965, 432);
+            this.killBtn.Location = new System.Drawing.Point(965, 467);
             this.killBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.killBtn.Name = "killBtn";
             this.killBtn.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
@@ -616,12 +618,56 @@
             this.killBtn.TextOffset = new System.Drawing.Point(0, 0);
             this.killBtn.Click += new System.EventHandler(this.killBtn_Click);
             // 
+            // addModBtn
+            // 
+            this.addModBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.addModBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.addModBtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.addModBtn.CheckButton = false;
+            this.addModBtn.Checked = false;
+            this.addModBtn.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.addModBtn.CheckedForeColor = System.Drawing.Color.White;
+            this.addModBtn.CheckedImageTint = System.Drawing.Color.White;
+            this.addModBtn.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.addModBtn.Content = "Add a mod";
+            this.addModBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addModBtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.addModBtn.Font = new System.Drawing.Font("Inter", 12F);
+            this.addModBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.addModBtn.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(44)))));
+            this.addModBtn.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.addModBtn.HoverImageTint = System.Drawing.Color.White;
+            this.addModBtn.HoverOutline = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.addModBtn.Image = null;
+            this.addModBtn.ImageAutoCenter = true;
+            this.addModBtn.ImageExpand = new System.Drawing.Point(0, 0);
+            this.addModBtn.ImageOffset = new System.Drawing.Point(0, 0);
+            this.addModBtn.Location = new System.Drawing.Point(965, 260);
+            this.addModBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.addModBtn.Name = "addModBtn";
+            this.addModBtn.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.addModBtn.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.addModBtn.NormalImageTint = System.Drawing.Color.White;
+            this.addModBtn.NormalOutline = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.addModBtn.OutlineThickness = 1F;
+            this.addModBtn.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.addModBtn.PressedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.addModBtn.PressedImageTint = System.Drawing.Color.White;
+            this.addModBtn.PressedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.addModBtn.Rounding = new System.Windows.Forms.Padding(8);
+            this.addModBtn.Size = new System.Drawing.Size(178, 59);
+            this.addModBtn.TabIndex = 20;
+            this.addModBtn.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.addModBtn.TextOffset = new System.Drawing.Point(0, 0);
+            this.addModBtn.Click += new System.EventHandler(this.addModBtn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(37)))));
-            this.ClientSize = new System.Drawing.Size(1156, 580);
+            this.ClientSize = new System.Drawing.Size(1156, 615);
+            this.Controls.Add(this.addModBtn);
             this.Controls.Add(this.killBtn);
             this.Controls.Add(this.settingsBtn);
             this.Controls.Add(this.taskLbl);
@@ -680,6 +726,7 @@
         private CuoreUI.Components.cuiFormAnimator formAnimator;
         private CuoreUI.Controls.cuiButton settingsBtn;
         private CuoreUI.Controls.cuiButton killBtn;
+        private CuoreUI.Controls.cuiButton addModBtn;
     }
 }
 

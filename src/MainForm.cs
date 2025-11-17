@@ -3,7 +3,13 @@ using ByteSizeLib;
 using CmlLib.Core;
 using CmlLib.Core.Auth;
 using CmlLib.Core.Auth.Microsoft;
+using CmlLib.Core.Installer.Forge;
+using CmlLib.Core.Installer.NeoForge;
+using CmlLib.Core.ModLoaders.FabricMC;
+using CmlLib.Core.ModLoaders.LiteLoader;
+using CmlLib.Core.ModLoaders.QuiltMC;
 using CmlLib.Core.ProcessBuilder;
+using CuoreUI.Components;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -80,6 +86,11 @@ namespace YAMCL
             }
         }
 
+        private VersionInstance.ModLoader GetModLoader(string name)
+        {
+            return (VersionInstance.ModLoader)Enum.Parse(typeof(VersionInstance.ModLoader), name);
+        }
+
         private void LoadInstances()
         {
             string appDataFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "YAMCL");
@@ -91,9 +102,12 @@ namespace YAMCL
 
                 string[] instanceData = File.ReadAllText(instanceDataFile).Split(';');
 
-                var instance = new VersionInstance(instanceData[0], instanceData[1], dir);
+                // Name;BaseVersion;Version;ModLoader is the format
+                var instance = new VersionInstance(instanceData[0], instanceData[2], GetModLoader(instanceData[3]), dir);
+                instance.BaseVersion = instanceData[1];
                 instances.Add(instance);
-                instanceList.Items.Add($"{instance.Name} [{instance.Version}]");
+                var loader = instance.Loader == VersionInstance.ModLoader.None ? "Vanilla" : instance.Loader.ToString();
+                instanceList.Items.Add($"{instance.Name} [{instance.BaseVersion}, {loader}]");
             }
         }
 
@@ -230,6 +244,36 @@ namespace YAMCL
             }
         }
 
+        private async Task<string> InstallLoader(string mcVersion, MinecraftLauncher launcher, VersionInstance.ModLoader loader)
+        {
+            switch (loader)
+            {
+                case VersionInstance.ModLoader.Fabric:
+                    var fabric = new FabricInstaller(new System.Net.Http.HttpClient());
+                    return await fabric.Install(mcVersion, launcher.MinecraftPath);
+
+                case VersionInstance.ModLoader.Forge:
+                    var forge = new ForgeInstaller(launcher);
+                    return await forge.Install(mcVersion);
+
+                case VersionInstance.ModLoader.NeoForge:
+                    var neoForge = new NeoForgeInstaller(launcher);
+                    return await neoForge.Install(mcVersion);
+
+                case VersionInstance.ModLoader.Quilt:
+                    var quilt = new QuiltInstaller(new System.Net.Http.HttpClient());
+                    return await quilt.Install(mcVersion, launcher.MinecraftPath);
+
+                case VersionInstance.ModLoader.LiteLoader:
+                    var liteLoader = new LiteLoaderInstaller(new System.Net.Http.HttpClient());
+                    var version = new LiteLoaderVersion();
+                    return await liteLoader.Install(version, await launcher.GetVersionAsync(mcVersion), launcher.MinecraftPath);
+
+                default:
+                    return string.Empty;
+            }
+        }
+
         private async void launchBtn_Click(object sender, EventArgs e)
         {
             try
@@ -272,6 +316,13 @@ namespace YAMCL
                 {
                     this.Invoke(new Action(() => downloadProgressLbl.Content = $"{ByteSize.FromBytes(ev.ProgressedBytes)} / {ByteSize.FromBytes(ev.TotalBytes)}"));
                 };
+
+                if (instance.Loader != VersionInstance.ModLoader.None && (instance.Version == instance.BaseVersion))
+                {
+                    taskLbl.Content = $"Installing {instance.Loader}";
+                    instance.Version = await InstallLoader(instance.BaseVersion, launcher, instance.Loader);
+                    instance.CreateDataFiles();
+                }
 
                 var proc = await launcher.InstallAndBuildProcessAsync(instance.Version, new MLaunchOption()
                 {
@@ -388,6 +439,41 @@ namespace YAMCL
                         processes.Remove(proc);
                     }
                 }
+            }
+        }
+
+        private void addModBtn_Click(object sender, EventArgs e)
+        {
+            if (instanceList.SelectedItem == null)
+            {
+                MessageBox.Show("Please select an instance!", "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var instance = instances[instanceList.SelectedIndex];
+            
+            try
+            {
+                string modDir = Path.Combine(instance.DirectoryPath, "mods");
+
+                if (!Directory.Exists(modDir))
+                    Directory.CreateDirectory(modDir);
+
+                using (var dial = new OpenFileDialog())
+                {
+                    dial.Filter = "Minecraft Mods (*.jar)|*.jar";
+
+                    var dialResult = dial.ShowDialog();
+                    if (dialResult == DialogResult.OK)
+                    {
+                        string modFile = Path.Combine(modDir, dial.SafeFileName);
+                        File.Copy(dial.FileName, modFile, true);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

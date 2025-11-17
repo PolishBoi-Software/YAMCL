@@ -9,12 +9,25 @@ namespace YAMCL
 {
     public class VersionInstance
     {
+        public enum ModLoader
+        {
+            Fabric,
+            Forge,
+            NeoForge,
+            Quilt,
+            LiteLoader,
+            None
+        }
+
         public string Name { get; set; }
         public string Version { get; set; }
+        public string BaseVersion { get; set; }
         public string DirectoryPath { get; set; }
+        public ModLoader Loader { get; set; }
 
-        public VersionInstance(string name, string version, string dirPath)
+        public VersionInstance(string name, string version, ModLoader loader, string dirPath)
         {
+            Loader = loader;
             Name = name;
             Version = version;
             DirectoryPath = dirPath;
@@ -32,7 +45,7 @@ namespace YAMCL
 
                 string dataFile = Path.Combine(instancePath, "instance.dat");
 
-                File.WriteAllText(dataFile, $@"{Name};{Version}");
+                File.WriteAllText(dataFile, $@"{Name};{BaseVersion};{Version};{Loader}");
             }
             catch { }
         }

@@ -31,13 +31,15 @@
             this.components = new System.ComponentModel.Container();
             this.nameBox = new CuoreUI.Controls.cuiTextBox();
             this.versionList = new CuoreUI.Controls.cuiListbox();
-            this.versionLbl = new CuoreUI.Controls.cuiLabel();
             this.nameLbl = new CuoreUI.Controls.cuiLabel();
             this.okBtn = new CuoreUI.Controls.cuiButton();
             this.cancelBtn = new CuoreUI.Controls.cuiButton();
             this.formDrag = new CuoreUI.Components.cuiFormDrag(this.components);
             this.formRounder = new CuoreUI.Components.cuiFormRounder();
             this.formAnimator = new CuoreUI.Components.cuiFormAnimator(this.components);
+            this.versionLbl = new CuoreUI.Controls.cuiLabel();
+            this.modLoaderLbl = new CuoreUI.Controls.cuiLabel();
+            this.modLoaderList = new CuoreUI.Controls.cuiListbox();
             this.SuspendLayout();
             // 
             // nameBox
@@ -97,19 +99,6 @@
             this.versionList.Size = new System.Drawing.Size(509, 374);
             this.versionList.TabIndex = 7;
             // 
-            // versionLbl
-            // 
-            this.versionLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.versionLbl.Content = "Instance\\ version:";
-            this.versionLbl.Font = new System.Drawing.Font("Inter Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.versionLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
-            this.versionLbl.HorizontalAlignment = System.Drawing.StringAlignment.Center;
-            this.versionLbl.Location = new System.Drawing.Point(159, 92);
-            this.versionLbl.Name = "versionLbl";
-            this.versionLbl.Size = new System.Drawing.Size(210, 20);
-            this.versionLbl.TabIndex = 8;
-            this.versionLbl.VerticalAlignment = System.Drawing.StringAlignment.Near;
-            // 
             // nameLbl
             // 
             this.nameLbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -148,7 +137,7 @@
             this.okBtn.ImageAutoCenter = true;
             this.okBtn.ImageExpand = new System.Drawing.Point(0, 0);
             this.okBtn.ImageOffset = new System.Drawing.Point(0, 0);
-            this.okBtn.Location = new System.Drawing.Point(438, 505);
+            this.okBtn.Location = new System.Drawing.Point(438, 746);
             this.okBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.okBtn.Name = "okBtn";
             this.okBtn.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
@@ -191,7 +180,7 @@
             this.cancelBtn.ImageAutoCenter = true;
             this.cancelBtn.ImageExpand = new System.Drawing.Point(0, 0);
             this.cancelBtn.ImageOffset = new System.Drawing.Point(0, 0);
-            this.cancelBtn.Location = new System.Drawing.Point(12, 505);
+            this.cancelBtn.Location = new System.Drawing.Point(12, 746);
             this.cancelBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
@@ -229,16 +218,78 @@
             this.formAnimator.TargetForm = this;
             this.formAnimator.TargetOpacity = 1D;
             // 
+            // versionLbl
+            // 
+            this.versionLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.versionLbl.Content = "Instance\\ version:";
+            this.versionLbl.Font = new System.Drawing.Font("Inter Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.versionLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.versionLbl.HorizontalAlignment = System.Drawing.StringAlignment.Center;
+            this.versionLbl.Location = new System.Drawing.Point(159, 91);
+            this.versionLbl.Name = "versionLbl";
+            this.versionLbl.Size = new System.Drawing.Size(210, 20);
+            this.versionLbl.TabIndex = 12;
+            this.versionLbl.VerticalAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // modLoaderLbl
+            // 
+            this.modLoaderLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.modLoaderLbl.Content = "Mod\\ loader:";
+            this.modLoaderLbl.Font = new System.Drawing.Font("Inter Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.modLoaderLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.modLoaderLbl.HorizontalAlignment = System.Drawing.StringAlignment.Center;
+            this.modLoaderLbl.Location = new System.Drawing.Point(159, 503);
+            this.modLoaderLbl.Name = "modLoaderLbl";
+            this.modLoaderLbl.Size = new System.Drawing.Size(210, 20);
+            this.modLoaderLbl.TabIndex = 13;
+            this.modLoaderLbl.VerticalAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // modLoaderList
+            // 
+            this.modLoaderList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.modLoaderList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.modLoaderList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.modLoaderList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.modLoaderList.DisplayMember = "Name";
+            this.modLoaderList.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.modLoaderList.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
+            this.modLoaderList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.modLoaderList.ForegroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.modLoaderList.FormattingEnabled = true;
+            this.modLoaderList.ItemBackgroundColor = System.Drawing.Color.Empty;
+            this.modLoaderList.ItemHeight = 34;
+            this.modLoaderList.ItemHoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(44)))));
+            this.modLoaderList.ItemHoverForegroundColor = System.Drawing.Color.DimGray;
+            this.modLoaderList.ItemRounding = 8;
+            this.modLoaderList.Items.AddRange(new object[] {
+            "Fabric",
+            "Forge",
+            "NeoForge",
+            "Quilt",
+            "LiteLoader",
+            "None"});
+            this.modLoaderList.ItemSelectedBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(71)))), ((int)(((byte)(90)))));
+            this.modLoaderList.Location = new System.Drawing.Point(12, 529);
+            this.modLoaderList.Name = "modLoaderList";
+            this.modLoaderList.OutlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.modLoaderList.Rounding = new System.Windows.Forms.Padding(8);
+            this.modLoaderList.SelectedForegroundColor = System.Drawing.Color.White;
+            this.modLoaderList.Size = new System.Drawing.Size(509, 204);
+            this.modLoaderList.TabIndex = 14;
+            // 
             // InstanceDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(37)))));
-            this.ClientSize = new System.Drawing.Size(534, 563);
+            this.ClientSize = new System.Drawing.Size(534, 804);
+            this.Controls.Add(this.modLoaderList);
+            this.Controls.Add(this.modLoaderLbl);
+            this.Controls.Add(this.versionLbl);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.okBtn);
             this.Controls.Add(this.nameLbl);
-            this.Controls.Add(this.versionLbl);
             this.Controls.Add(this.versionList);
             this.Controls.Add(this.nameBox);
             this.Font = new System.Drawing.Font("Inter", 9F);
@@ -260,12 +311,14 @@
         #endregion
         private CuoreUI.Controls.cuiTextBox nameBox;
         private CuoreUI.Controls.cuiListbox versionList;
-        private CuoreUI.Controls.cuiLabel versionLbl;
         private CuoreUI.Controls.cuiLabel nameLbl;
         private CuoreUI.Controls.cuiButton okBtn;
         private CuoreUI.Controls.cuiButton cancelBtn;
         private CuoreUI.Components.cuiFormDrag formDrag;
         private CuoreUI.Components.cuiFormRounder formRounder;
         private CuoreUI.Components.cuiFormAnimator formAnimator;
+        private CuoreUI.Controls.cuiListbox modLoaderList;
+        private CuoreUI.Controls.cuiLabel modLoaderLbl;
+        private CuoreUI.Controls.cuiLabel versionLbl;
     }
 }

@@ -17,6 +17,7 @@ namespace YAMCL
         public string InstanceVersion { get; private set; }
         public VersionInstance InstanceObject { get; private set; }
         public bool Failed { get; private set; }
+        public VersionInstance.ModLoader InstanceLoader { get; private set; }
 
         public InstanceDialog()
         {
@@ -34,6 +35,17 @@ namespace YAMCL
             return item.Name;
         }
 
+        private VersionInstance.ModLoader GetModLoader()
+        {
+            if (modLoaderList.SelectedItem == null)
+            {
+                return VersionInstance.ModLoader.None;
+            }
+
+            var item = modLoaderList.SelectedItem;
+            return (VersionInstance.ModLoader)Enum.Parse(typeof(VersionInstance.ModLoader), item.ToString());
+        }
+
         private void okBtn_Click(object sender, EventArgs e)
         {
             try
@@ -41,7 +53,9 @@ namespace YAMCL
                 DialogResult = DialogResult.OK;
                 InstanceName = nameBox.Content;
                 InstanceVersion = GetSelectedVersion();
-                InstanceObject = new VersionInstance(InstanceName, InstanceVersion, Program.YAMCLFolder);
+                InstanceLoader = GetModLoader();
+                InstanceObject = new VersionInstance(InstanceName, InstanceVersion, InstanceLoader, Program.YAMCLFolder);
+                InstanceObject.BaseVersion = InstanceVersion;
                 Failed = false;
                 Close();
             }
@@ -60,8 +74,6 @@ namespace YAMCL
             {
                 versionList.Items.Add(version);
             }
-
-            versionList.DisplayMember = "Name";
         }
 
         private void InstanceDialog_Load(object sender, EventArgs e)
@@ -74,6 +86,7 @@ namespace YAMCL
             DialogResult = DialogResult.Cancel;
             InstanceName = string.Empty;
             InstanceVersion = string.Empty;
+            InstanceLoader = VersionInstance.ModLoader.None;
             InstanceObject = null;
             Failed = false;
             Close();
