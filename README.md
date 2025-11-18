@@ -4,6 +4,9 @@
     </picture>
 </p>
 
+> [!warning]
+> Not to be confused with [this one](https://github.com/Eloston/YAMCL), altough that wasn't updated in 11 years so...
+
 # YAMCL
 A Minecraft launcher that tries to be good.
 
