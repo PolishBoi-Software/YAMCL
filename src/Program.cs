@@ -24,6 +24,8 @@ namespace YAMCL
 
                 if (!Directory.Exists(instancesDirPath))
                     Directory.CreateDirectory(instancesDirPath);
+
+                ConfigManager.CreateDefaultConfig();
             }
             catch { }
         }

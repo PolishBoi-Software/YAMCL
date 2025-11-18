@@ -13,6 +13,16 @@ namespace YAMCL
     {
         public static Dictionary<string, object> Config { get; set; } = new Dictionary<string, object>();
 
+        public static void CreateDefaultConfig()
+        {
+            string configFilePath = Path.Combine(Program.YAMCLFolder, "config.json");
+            if (!File.Exists(configFilePath))
+                File.WriteAllText(configFilePath, "{\n" +
+                    "   \"autoSignIn\": true,\n" +
+                    "   \"autoUpdate\": true\n" +
+                    "}");
+        }
+
         private static void LoadOldConfig()
         {
             string configFilePath = Path.Combine(Program.YAMCLFolder, "config.cfg");
