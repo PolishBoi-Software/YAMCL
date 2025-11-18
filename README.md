@@ -8,7 +8,7 @@ A Minecraft launcher that tries to be good.
 
 * Microsoft Authentication
 * Instances (Saved in user's AppData)
-* Good looking UI (Thank you, \[CuoreUI](https://github.com/owtysm2/CuoreUI)!)
+* Good looking UI (Thank you, [CuoreUI](https://github.com/owtysm2/CuoreUI)!)
 * Mod loader support
 
 
