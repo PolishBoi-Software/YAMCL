@@ -15,15 +15,15 @@ namespace YAMCL
         public SettingsDialog()
         {
             InitializeComponent();
-            autoSignInCheck.Checked = Program.frm.config["autoSignIn"];
-            autoUpdateCheck.Checked = Program.frm.config["autoUpdate"];
+            autoSignInCheck.Checked = (bool)ConfigManager.Config["autoSignIn"];
+            autoUpdateCheck.Checked = (bool)ConfigManager.Config["autoUpdate"];
         }
 
         private void okBtn_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
-            Program.frm.config["autoSignIn"] = autoSignInCheck.Checked;
-            Program.frm.config["autoUpdate"] = autoUpdateCheck.Checked;
+            ConfigManager.Config["autoSignIn"] = autoSignInCheck.Checked;
+            ConfigManager.Config["autoUpdate"] = autoUpdateCheck.Checked;
             Close();
         }
 

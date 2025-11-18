@@ -67,7 +67,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -91,12 +91,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigManager.cs" />
     <Compile Include="InstanceDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="InstanceDialog.Designer.cs">
       <DependentUpon>InstanceDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="InstanceManager.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,7 +113,7 @@
     <Compile Include="SettingsDialog.Designer.cs">
       <DependentUpon>SettingsDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="VersionInstance.cs" />
+    <Compile Include="MinecraftInstance.cs" />
     <EmbeddedResource Include="InstanceDialog.resx">
       <DependentUpon>InstanceDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -175,6 +177,9 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Web.WebView2">
       <Version>1.0.3595.46</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.4</Version>
     </PackageReference>
     <PackageReference Include="System.Net.Http.Json">
       <Version>10.0.0</Version>

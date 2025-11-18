@@ -15,9 +15,9 @@ namespace YAMCL
     {
         public string InstanceName { get; private set; }
         public string InstanceVersion { get; private set; }
-        public VersionInstance InstanceObject { get; private set; }
+        public MinecraftInstance InstanceObject { get; private set; }
         public bool Failed { get; private set; }
-        public VersionInstance.ModLoader InstanceLoader { get; private set; }
+        public MinecraftInstance.ModLoader InstanceLoader { get; private set; }
 
         public InstanceDialog()
         {
@@ -35,15 +35,15 @@ namespace YAMCL
             return item.Name;
         }
 
-        private VersionInstance.ModLoader GetModLoader()
+        private MinecraftInstance.ModLoader GetModLoader()
         {
             if (modLoaderList.SelectedItem == null)
             {
-                return VersionInstance.ModLoader.None;
+                return MinecraftInstance.ModLoader.None;
             }
 
             var item = modLoaderList.SelectedItem;
-            return (VersionInstance.ModLoader)Enum.Parse(typeof(VersionInstance.ModLoader), item.ToString());
+            return (MinecraftInstance.ModLoader)Enum.Parse(typeof(MinecraftInstance.ModLoader), item.ToString());
         }
 
         private void okBtn_Click(object sender, EventArgs e)
@@ -54,7 +54,7 @@ namespace YAMCL
                 InstanceName = nameBox.Content;
                 InstanceVersion = GetSelectedVersion();
                 InstanceLoader = GetModLoader();
-                InstanceObject = new VersionInstance(InstanceName, InstanceVersion, InstanceLoader, Program.YAMCLFolder);
+                InstanceObject = new MinecraftInstance(InstanceName, InstanceVersion, InstanceLoader, Program.YAMCLFolder);
                 InstanceObject.BaseVersion = InstanceVersion;
                 Failed = false;
                 Close();
@@ -72,6 +72,8 @@ namespace YAMCL
 
             foreach (var version in versions)
             {
+                if (version.Type == "local") continue;
+
                 versionList.Items.Add(version);
             }
         }
@@ -86,7 +88,7 @@ namespace YAMCL
             DialogResult = DialogResult.Cancel;
             InstanceName = string.Empty;
             InstanceVersion = string.Empty;
-            InstanceLoader = VersionInstance.ModLoader.None;
+            InstanceLoader = MinecraftInstance.ModLoader.None;
             InstanceObject = null;
             Failed = false;
             Close();

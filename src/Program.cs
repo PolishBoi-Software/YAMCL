@@ -11,22 +11,19 @@ namespace YAMCL
     {
         public static MainForm frm;
         public static string YAMCLFolder;
+
         private static void Init()
         {
             try
             {
                 YAMCLFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "YAMCL");
                 string instancesDirPath = Path.Combine(YAMCLFolder, "instances");
-                string configFilePath = Path.Combine(YAMCLFolder, "config.cfg");
 
                 if (!Directory.Exists(YAMCLFolder))
                     Directory.CreateDirectory(YAMCLFolder);
 
                 if (!Directory.Exists(instancesDirPath))
                     Directory.CreateDirectory(instancesDirPath);
-
-                if (!File.Exists(configFilePath))
-                    File.WriteAllText(configFilePath, "# yes = true\n# no = false\n# maybe = 50/50\n\nautoSignIn = yes\nautoUpdate = yes");
             }
             catch { }
         }

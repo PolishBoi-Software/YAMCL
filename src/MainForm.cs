@@ -31,8 +31,6 @@ namespace YAMCL
         private JELoginHandler loginHandler;
         private MSession session;
         public MinecraftLauncher launcher = new MinecraftLauncher();
-        private List<VersionInstance> instances = new List<VersionInstance>();
-        public Dictionary<string, bool> config = new Dictionary<string, bool>();
         private List<Process> processes = new List<Process>();
 
         public MainForm()
@@ -86,64 +84,6 @@ namespace YAMCL
             }
         }
 
-        private VersionInstance.ModLoader GetModLoader(string name)
-        {
-            return (VersionInstance.ModLoader)Enum.Parse(typeof(VersionInstance.ModLoader), name);
-        }
-
-        private void LoadInstances()
-        {
-            string appDataFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "YAMCL");
-            string instancesDirPath = Path.Combine(appDataFolder, "instances");
-
-            foreach (var dir in Directory.GetDirectories(instancesDirPath))
-            {
-                string instanceDataFile = Path.Combine(dir, "instance.dat");
-
-                string[] instanceData = File.ReadAllText(instanceDataFile).Split(';');
-
-                // Name;BaseVersion;Version;ModLoader is the format
-                var instance = new VersionInstance(instanceData[0], instanceData[2], GetModLoader(instanceData[3]), dir);
-                instance.BaseVersion = instanceData[1];
-                instances.Add(instance);
-                var loader = instance.Loader == VersionInstance.ModLoader.None ? "Vanilla" : instance.Loader.ToString();
-                instanceList.Items.Add($"{instance.Name} [{instance.BaseVersion}, {loader}]");
-            }
-        }
-
-        private void LoadConfigFile()
-        {
-            string configFilePath = Path.Combine(Program.YAMCLFolder, "config.cfg");
-            if (!File.Exists(configFilePath)) return;
-
-            string[] lines = File.ReadAllLines(configFilePath);
-
-            foreach (string line in lines)
-            {
-                if (string.IsNullOrEmpty(line) || line.StartsWith("#")) continue;
-
-                string[] parts = line.Split('=');
-
-                if (parts.Length != 2)
-                    continue;
-
-                string key = parts[0].Trim();
-                string value = parts[1].Trim();
-
-                bool bVal = false;
-
-                if (value == "yes")
-                    bVal = true;
-                else if (value == "maybe")
-                {
-                    var rand = new Random();
-                    bVal = rand.NextDouble() < 0.5;
-                }
-
-                config[key] = bVal;
-            }
-        }
-
         private async void MainForm_Load(object sender, EventArgs e)
         {
             #if DEBUG
@@ -154,20 +94,31 @@ namespace YAMCL
             AutoUpdater.AppTitle = "YAMCL";
             AutoUpdater.OpenDownloadPage = true;
 
-            LoadConfigFile();
+            ConfigManager.LoadConfig();
             LoadInstances();
 
             loginHandler = JELoginHandlerBuilder.BuildDefault();
             
-            if (config["autoSignIn"])
+            if ((bool)ConfigManager.Config["autoSignIn"])
             {
                 session = await loginHandler.Authenticate();
                 OnSignIn();
             }
 
-            if (Program.frm.config["autoUpdate"])
+            if ((bool)ConfigManager.Config["autoUpdate"])
             {
                 AutoUpdater.Start("https://raw.githubusercontent.com/PolishBoi-Software/Yet-Another-Minecraft-Launcher/main/version.xml");
+            }
+        }
+
+        private void LoadInstances()
+        {
+            InstanceManager.LoadInstances();
+
+            foreach (var inst in InstanceManager.Instances)
+            {
+                string loader = inst.Loader != MinecraftInstance.ModLoader.None ? inst.Loader.ToString() : "Vanilla";
+                instanceList.Items.Add($"{inst.Name} [{inst.BaseVersion}, {loader}]");
             }
         }
 
@@ -195,7 +146,7 @@ namespace YAMCL
 
         private bool InstanceAlreadyExists(string name)
         {
-            return instances.Find(i => i.Name == name) != null;
+            return InstanceManager.Instances.Find(i => i.Name == name) != null;
         }
 
         private void createInst_Click(object sender, EventArgs e)
@@ -215,7 +166,7 @@ namespace YAMCL
                     }
 
                     dial.InstanceObject.CreateDataFiles();
-                    instances.Clear();
+                    InstanceManager.Instances.Clear();
                     instanceList.Items.Clear();
                     LoadInstances();
                     instanceList.Refresh();
@@ -228,14 +179,14 @@ namespace YAMCL
             if (instanceList.SelectedItem == null)
                 return;
 
-            var instance = instances[instanceList.SelectedIndex];
+            var instance = InstanceManager.Instances[instanceList.SelectedIndex];
             var result = MessageBox.Show($"Are you sure you want to remove instance \"{instance.Name}\"?\n\nThis cannot be undone.", "YAMCL", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 instance.Remove();
 
-                instances.Remove(instance);
-                instances.Clear();
+                InstanceManager.Instances.Remove(instance);
+                InstanceManager.Instances.Clear();
                 instanceList.Items.Clear();
                 LoadInstances();
                 instanceList.Refresh();
@@ -244,27 +195,27 @@ namespace YAMCL
             }
         }
 
-        private async Task<string> InstallLoader(string mcVersion, MinecraftLauncher launcher, VersionInstance.ModLoader loader)
+        private async Task<string> InstallLoader(string mcVersion, MinecraftLauncher launcher, MinecraftInstance.ModLoader loader)
         {
             switch (loader)
             {
-                case VersionInstance.ModLoader.Fabric:
+                case MinecraftInstance.ModLoader.Fabric:
                     var fabric = new FabricInstaller(new System.Net.Http.HttpClient());
                     return await fabric.Install(mcVersion, launcher.MinecraftPath);
 
-                case VersionInstance.ModLoader.Forge:
+                case MinecraftInstance.ModLoader.Forge:
                     var forge = new ForgeInstaller(launcher);
                     return await forge.Install(mcVersion);
 
-                case VersionInstance.ModLoader.NeoForge:
+                case MinecraftInstance.ModLoader.NeoForge:
                     var neoForge = new NeoForgeInstaller(launcher);
                     return await neoForge.Install(mcVersion);
 
-                case VersionInstance.ModLoader.Quilt:
+                case MinecraftInstance.ModLoader.Quilt:
                     var quilt = new QuiltInstaller(new System.Net.Http.HttpClient());
                     return await quilt.Install(mcVersion, launcher.MinecraftPath);
 
-                case VersionInstance.ModLoader.LiteLoader:
+                case MinecraftInstance.ModLoader.LiteLoader:
                     var liteLoader = new LiteLoaderInstaller(new System.Net.Http.HttpClient());
                     var version = new LiteLoaderVersion();
                     return await liteLoader.Install(version, await launcher.GetVersionAsync(mcVersion), launcher.MinecraftPath);
@@ -297,7 +248,7 @@ namespace YAMCL
                 taskbarState.ProgressValue = 0;
                 taskbarState.State = CuoreUI.Components.cuiTaskbarStateController.TaskbarStates.Progress;
 
-                var instance = instances[instanceList.SelectedIndex];
+                var instance = InstanceManager.Instances[instanceList.SelectedIndex];
                 launcher = new MinecraftLauncher(instance.DirectoryPath);
 
                 launcher.FileProgressChanged += (s, ev) =>
@@ -317,7 +268,7 @@ namespace YAMCL
                     this.Invoke(new Action(() => downloadProgressLbl.Content = $"{ByteSize.FromBytes(ev.ProgressedBytes)} / {ByteSize.FromBytes(ev.TotalBytes)}"));
                 };
 
-                if (instance.Loader != VersionInstance.ModLoader.None && (instance.Version == instance.BaseVersion))
+                if (instance.Loader != MinecraftInstance.ModLoader.None && (instance.Version == instance.BaseVersion))
                 {
                     taskLbl.Content = $"Installing {instance.Loader}";
                     instance.Version = await InstallLoader(instance.BaseVersion, launcher, instance.Loader);
@@ -362,44 +313,11 @@ namespace YAMCL
             }
         }
 
-        private void SaveConfigFile()
-        {
-            string configFilePath = Path.Combine(Program.YAMCLFolder, "config.cfg");
-            if (!File.Exists(configFilePath)) return;
-
-            string[] oldLines = File.ReadAllLines(configFilePath);
-            string[] newLines = new string[oldLines.Length];
-            int i = 0;
-
-            foreach (string line in oldLines)
-            {
-                if (string.IsNullOrEmpty(line) || line.StartsWith("#") || !line.Contains('='))
-                {
-                    newLines[i++] = line;
-                    continue;
-                }
-
-                string name = line.Split('=')[0].Trim();
-
-                if (!config.ContainsKey(name))
-                {
-                    newLines[i++] = line;
-                    continue;
-                }
-
-                string val = config[name] ? "yes" : "no";
-
-                newLines[i++] = $"{name} = {val}";
-            }
-
-            File.WriteAllLines(configFilePath, newLines);
-        }
-
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
 
-            SaveConfigFile();
+            ConfigManager.SaveConfig();
 
             e.Cancel = false;
         }
@@ -450,7 +368,7 @@ namespace YAMCL
                 return;
             }
 
-            var instance = instances[instanceList.SelectedIndex];
+            var instance = InstanceManager.Instances[instanceList.SelectedIndex];
             
             try
             {
