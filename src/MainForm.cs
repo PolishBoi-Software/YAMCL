@@ -19,6 +19,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Media;
+using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -90,9 +91,24 @@ namespace YAMCL
                 AutoUpdater.InstalledVersion = new Version(1, 0, 0);
             #endif
 
-            AutoUpdater.UpdateMode = Mode.ForcedDownload;
+            AutoUpdater.CheckForUpdateEvent += (ev) =>
+            {
+                if (ev.IsUpdateAvailable)
+                {
+                    var result = MessageBox.Show($"You use YAMCL {ev.InstalledVersion}?\nDid you know that YAMCL {ev.CurrentVersion} is available?\n\nWould you like to update?", "Update available", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (result == DialogResult.Yes)
+                    {
+                        string tempFile = Path.Combine(Path.GetTempFileName(), Path.ChangeExtension(Guid.NewGuid().ToString(), ".exe"));
+                        using (WebClient client = new WebClient())
+                        {
+                            client.DownloadFile(ev.DownloadURL, tempFile);
+                        }
+                        Process.Start(tempFile);
+                        Application.Exit();
+                    }
+                }
+            };
             AutoUpdater.AppTitle = "YAMCL";
-            AutoUpdater.OpenDownloadPage = true;
 
             ConfigManager.LoadConfig();
             LoadInstances();
@@ -107,7 +123,7 @@ namespace YAMCL
 
             if ((bool)ConfigManager.Config["autoUpdate"])
             {
-                AutoUpdater.Start("https://raw.githubusercontent.com/PolishBoi-Software/Yet-Another-Minecraft-Launcher/main/version.xml");
+                this.BeginInvoke(new Action(() => AutoUpdater.Start("https://raw.githubusercontent.com/PolishBoi-Software/Yet-Another-Minecraft-Launcher/main/version.xml")));
             }
         }
 
