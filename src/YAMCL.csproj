@@ -55,7 +55,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>YAMCLIcon.ico</ApplicationIcon>
+    <ApplicationIcon>AppIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>0EA9147EF856F53F947D320D544EDE88045AF150</ManifestCertificateThumbprint>
@@ -201,6 +201,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AppIcon.ico" />
     <Content Include="YAMCLIcon.ico" />
   </ItemGroup>
   <ItemGroup>
