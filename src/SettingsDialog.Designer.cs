@@ -40,6 +40,10 @@
             this.autoUpdateLbl = new CuoreUI.Controls.cuiLabel();
             this.autoUpdateCheck = new CuoreUI.Controls.cuiSwitch();
             this.autoUpdateLblTooltip = new CuoreUI.Components.cuiTooltipHover(this.components);
+            this.discordRpcLbl = new CuoreUI.Controls.cuiLabel();
+            this.discordRpcCheck = new CuoreUI.Controls.cuiSwitch();
+            this.discordRpcLblTooltip = new CuoreUI.Components.cuiTooltipHover(this.components);
+            this.checkUpdateBtn = new CuoreUI.Controls.cuiButton();
             this.SuspendLayout();
             // 
             // okBtn
@@ -231,12 +235,100 @@
             this.autoUpdateLblTooltip.TooltipPosition = CuoreUI.Components.cuiTooltipHover.Position.Top;
             this.autoUpdateLblTooltip.TooltipPositionOffset = new System.Drawing.Size(0, 0);
             // 
+            // discordRpcLbl
+            // 
+            this.discordRpcLbl.Content = "Discord\\ RPC";
+            this.discordRpcLbl.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Bold);
+            this.discordRpcLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.discordRpcLbl.HorizontalAlignment = System.Drawing.StringAlignment.Near;
+            this.discordRpcLbl.Location = new System.Drawing.Point(66, 95);
+            this.discordRpcLbl.Name = "discordRpcLbl";
+            this.discordRpcLbl.Size = new System.Drawing.Size(210, 20);
+            this.discordRpcLbl.TabIndex = 18;
+            this.discordRpcLbl.VerticalAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // discordRpcCheck
+            // 
+            this.discordRpcCheck.Checked = false;
+            this.discordRpcCheck.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(180)))), ((int)(((byte)(250)))));
+            this.discordRpcCheck.CheckedForeground = System.Drawing.Color.White;
+            this.discordRpcCheck.CheckedOutlineColor = System.Drawing.Color.Empty;
+            this.discordRpcCheck.CheckedSymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.discordRpcCheck.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.discordRpcCheck.Location = new System.Drawing.Point(12, 92);
+            this.discordRpcCheck.MinimumSize = new System.Drawing.Size(12, 8);
+            this.discordRpcCheck.Name = "discordRpcCheck";
+            this.discordRpcCheck.OutlineThickness = 1F;
+            this.discordRpcCheck.ShowSymbols = false;
+            this.discordRpcCheck.Size = new System.Drawing.Size(48, 26);
+            this.discordRpcCheck.TabIndex = 17;
+            this.discordRpcCheck.ThumbSizeModifier = new System.Drawing.Size(0, 0);
+            this.discordRpcCheck.UncheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.discordRpcCheck.UncheckedForeground = System.Drawing.Color.White;
+            this.discordRpcCheck.UncheckedOutlineColor = System.Drawing.Color.Empty;
+            this.discordRpcCheck.UncheckedSymbolColor = System.Drawing.Color.Gray;
+            // 
+            // discordRpcLblTooltip
+            // 
+            this.discordRpcLblTooltip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(37)))));
+            this.discordRpcLblTooltip.Content = "Displays YAMCL in your Discord rich presence.";
+            this.discordRpcLblTooltip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.discordRpcLblTooltip.TargetControl = this.discordRpcLbl;
+            this.discordRpcLblTooltip.TooltipPosition = CuoreUI.Components.cuiTooltipHover.Position.Top;
+            this.discordRpcLblTooltip.TooltipPositionOffset = new System.Drawing.Size(0, 0);
+            // 
+            // checkUpdateBtn
+            // 
+            this.checkUpdateBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkUpdateBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.checkUpdateBtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.checkUpdateBtn.CheckButton = false;
+            this.checkUpdateBtn.Checked = false;
+            this.checkUpdateBtn.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.checkUpdateBtn.CheckedForeColor = System.Drawing.Color.White;
+            this.checkUpdateBtn.CheckedImageTint = System.Drawing.Color.White;
+            this.checkUpdateBtn.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.checkUpdateBtn.Content = "Check for updates";
+            this.checkUpdateBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkUpdateBtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.checkUpdateBtn.Font = new System.Drawing.Font("Inter", 12F);
+            this.checkUpdateBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.checkUpdateBtn.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(44)))));
+            this.checkUpdateBtn.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.checkUpdateBtn.HoverImageTint = System.Drawing.Color.White;
+            this.checkUpdateBtn.HoverOutline = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.checkUpdateBtn.Image = null;
+            this.checkUpdateBtn.ImageAutoCenter = true;
+            this.checkUpdateBtn.ImageExpand = new System.Drawing.Point(0, 0);
+            this.checkUpdateBtn.ImageOffset = new System.Drawing.Point(0, 0);
+            this.checkUpdateBtn.Location = new System.Drawing.Point(544, 15);
+            this.checkUpdateBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkUpdateBtn.Name = "checkUpdateBtn";
+            this.checkUpdateBtn.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.checkUpdateBtn.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.checkUpdateBtn.NormalImageTint = System.Drawing.Color.White;
+            this.checkUpdateBtn.NormalOutline = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.checkUpdateBtn.OutlineThickness = 1F;
+            this.checkUpdateBtn.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.checkUpdateBtn.PressedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.checkUpdateBtn.PressedImageTint = System.Drawing.Color.White;
+            this.checkUpdateBtn.PressedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.checkUpdateBtn.Rounding = new System.Windows.Forms.Padding(8);
+            this.checkUpdateBtn.Size = new System.Drawing.Size(180, 44);
+            this.checkUpdateBtn.TabIndex = 19;
+            this.checkUpdateBtn.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.checkUpdateBtn.TextOffset = new System.Drawing.Point(0, 0);
+            this.checkUpdateBtn.Click += new System.EventHandler(this.checkUpdateBtn_Click);
+            // 
             // SettingsDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(37)))));
             this.ClientSize = new System.Drawing.Size(737, 398);
+            this.Controls.Add(this.checkUpdateBtn);
+            this.Controls.Add(this.discordRpcLbl);
+            this.Controls.Add(this.discordRpcCheck);
             this.Controls.Add(this.autoUpdateLbl);
             this.Controls.Add(this.autoUpdateCheck);
             this.Controls.Add(this.cancelBtn);
@@ -272,5 +364,9 @@
         private CuoreUI.Controls.cuiLabel autoUpdateLbl;
         private CuoreUI.Controls.cuiSwitch autoUpdateCheck;
         private CuoreUI.Components.cuiTooltipHover autoUpdateLblTooltip;
+        private CuoreUI.Controls.cuiLabel discordRpcLbl;
+        private CuoreUI.Controls.cuiSwitch discordRpcCheck;
+        private CuoreUI.Components.cuiTooltipHover discordRpcLblTooltip;
+        private CuoreUI.Controls.cuiButton checkUpdateBtn;
     }
 }

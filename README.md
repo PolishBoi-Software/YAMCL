@@ -11,11 +11,11 @@
 A Minecraft launcher that tries to be good.
 
 # Features
-* Microsoft Authentication
-* Instances (Saved in user's AppData)
-* Good looking UI (Thank you, [CuoreUI](https://github.com/owtysm2/CuoreUI)!)
-* Mod loader support
+- Microsoft Authentication
+- Instances (Saved in user's AppData)
+- Good looking UI (Thank you, [CuoreUI](https://github.com/owtysm2/CuoreUI)!)
+- Mod loader support
+- Discord Rich Presence
 
 # Why?
-I was bored. I don't regret making this, though...!
-This is also a personal project, besides `Blue Screen of Click` which was made as a joke.
+I was bored. I don't regret making this, though...!<br>This is also a personal project.

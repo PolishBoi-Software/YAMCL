@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoUpdaterDotNET;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,7 @@ namespace YAMCL
             InitializeComponent();
             autoSignInCheck.Checked = (bool)ConfigManager.Config["autoSignIn"];
             autoUpdateCheck.Checked = (bool)ConfigManager.Config["autoUpdate"];
+            discordRpcCheck.Checked = (bool)ConfigManager.Config["discordRpc"];
         }
 
         private void okBtn_Click(object sender, EventArgs e)
@@ -24,6 +26,7 @@ namespace YAMCL
             DialogResult = DialogResult.OK;
             ConfigManager.Config["autoSignIn"] = autoSignInCheck.Checked;
             ConfigManager.Config["autoUpdate"] = autoUpdateCheck.Checked;
+            ConfigManager.Config["discordRpc"] = discordRpcCheck.Checked;
             Close();
         }
 
@@ -31,6 +34,12 @@ namespace YAMCL
         {
             DialogResult = DialogResult.Cancel;
             Close();
+        }
+
+        private void checkUpdateBtn_Click(object sender, EventArgs e)
+        {
+            Program.frm.checkForUpdateBtnClicked = true;
+            AutoUpdater.Start("https://raw.githubusercontent.com/PolishBoi-Software/Yet-Another-Minecraft-Launcher/main/version.xml");
         }
     }
 }

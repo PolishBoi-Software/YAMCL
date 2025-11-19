@@ -31,6 +31,7 @@ namespace YAMCL
     {
         private JELoginHandler loginHandler;
         private MSession session;
+        public bool checkForUpdateBtnClicked = false;
         public MinecraftLauncher launcher = new MinecraftLauncher();
         private bool UpdateDownloadFinished;
         private string UpdateFileName;
@@ -133,6 +134,14 @@ namespace YAMCL
                         }
                     }
                 }
+                else
+                {
+                    if (checkForUpdateBtnClicked)
+                    {
+                        MessageBox.Show("You have the latest version of YAMCL!", "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        checkForUpdateBtnClicked = false;
+                    }
+                }
             };
 
             ConfigManager.LoadConfig();
@@ -148,6 +157,11 @@ namespace YAMCL
             {
                 session = await loginHandler.Authenticate();
                 OnSignIn();
+            }
+
+            if ((bool)ConfigManager.Config["discordRpc"])
+            {
+                RichPresenceHandler.Init();
             }
         }
 
@@ -348,7 +362,8 @@ namespace YAMCL
 
                 if (result == DialogResult.OK)
                 {
-                    MessageBox.Show("Don't forget to close and reopen the app!", "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    ConfigManager.SaveConfig();
+                    taskLbl.Content = "Saved config!";
                 }
             }
         }

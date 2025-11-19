@@ -16,11 +16,28 @@ namespace YAMCL
         public static void CreateDefaultConfig()
         {
             string configFilePath = Path.Combine(Program.YAMCLFolder, "config.json");
-            if (!File.Exists(configFilePath))
-                File.WriteAllText(configFilePath, "{\n" +
-                    "   \"autoSignIn\": true,\n" +
-                    "   \"autoUpdate\": true\n" +
-                    "}");
+
+            if (File.Exists(configFilePath))
+            {
+                LoadConfig();
+            }
+
+            var defaultConfig = new Dictionary<string, object>()
+            {
+                { "autoSignIn", true },
+                { "autoUpdate", true },
+                { "discordRpc", true }
+            };
+
+            foreach (var key in defaultConfig.Keys)
+            {
+                if (!Config.ContainsKey(key))
+                {
+                    Config[key] = defaultConfig[key];
+                }
+            }
+
+            SaveConfig();
         }
 
         private static void LoadOldConfig()
