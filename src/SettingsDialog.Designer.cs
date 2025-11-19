@@ -109,7 +109,7 @@
             // autoSignInLbl
             // 
             this.autoSignInLbl.Content = "Auto\\ Sign\\ In";
-            this.autoSignInLbl.Font = new System.Drawing.Font("Inter Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.autoSignInLbl.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Bold);
             this.autoSignInLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.autoSignInLbl.HorizontalAlignment = System.Drawing.StringAlignment.Near;
             this.autoSignInLbl.Location = new System.Drawing.Point(66, 15);
@@ -192,7 +192,7 @@
             // autoUpdateLbl
             // 
             this.autoUpdateLbl.Content = "Auto\\ Update";
-            this.autoUpdateLbl.Font = new System.Drawing.Font("Inter Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.autoUpdateLbl.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Bold);
             this.autoUpdateLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.autoUpdateLbl.HorizontalAlignment = System.Drawing.StringAlignment.Near;
             this.autoUpdateLbl.Location = new System.Drawing.Point(66, 54);
@@ -250,7 +250,9 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SettingsDialog";
+            this.Opacity = 0D;
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Settings";
             this.ResumeLayout(false);

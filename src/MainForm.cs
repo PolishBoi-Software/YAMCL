@@ -32,6 +32,8 @@ namespace YAMCL
         private JELoginHandler loginHandler;
         private MSession session;
         public MinecraftLauncher launcher = new MinecraftLauncher();
+        private bool UpdateDownloadFinished;
+        private string UpdateFileName;
         private List<Process> processes = new List<Process>();
 
         public MainForm()
@@ -95,35 +97,57 @@ namespace YAMCL
             {
                 if (ev.IsUpdateAvailable)
                 {
-                    var result = MessageBox.Show($"You use YAMCL {ev.InstalledVersion}?\nDid you know that YAMCL {ev.CurrentVersion} is available?\n\nWould you like to update?", "Update available", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                    if (result == DialogResult.Yes)
+                    using (var dial = new UpdateDialog(ev.InstalledVersion, ev.CurrentVersion, ev.ChangelogURL))
                     {
-                        string tempFile = Path.Combine(Path.GetTempFileName(), Path.ChangeExtension(Guid.NewGuid().ToString(), ".exe"));
-                        using (WebClient client = new WebClient())
+                        var result = dial.ShowDialog();
+
+                        if (result == DialogResult.Yes)
                         {
-                            client.DownloadFile(ev.DownloadURL, tempFile);
+                            using (var web = new WebClient())
+                            {
+                                string path = Path.Combine(Path.GetTempPath(), Path.ChangeExtension(Guid.NewGuid().ToString(), "exe"));
+
+                                web.DownloadProgressChanged += (_s, _e) =>
+                                {
+                                    this.Invoke(new Action(() =>
+                                    {
+                                        if (progBar.MaxValue != 100)
+                                            progBar.MaxValue = 100;
+                                        progBar.Value = _e.ProgressPercentage;
+
+                                        downloadProgressLbl.Content = $"{ByteSize.FromBytes(_e.BytesReceived)} / {ByteSize.FromBytes(_e.TotalBytesToReceive)}";
+                                    }));
+                                };
+
+                                web.DownloadFileCompleted += (_s, _e) =>
+                                {
+                                    UpdateDownloadFinished = true;
+                                    taskLbl.Content = "Finished!";
+                                };
+
+                                UpdateFileName = path;
+
+                                taskLbl.Content = "Downloading update";
+                                web.DownloadFileAsync(new Uri(ev.DownloadURL), path);
+                            }                            
                         }
-                        Process.Start(tempFile);
-                        Application.Exit();
                     }
                 }
             };
-            AutoUpdater.AppTitle = "YAMCL";
 
             ConfigManager.LoadConfig();
             LoadInstances();
-
             loginHandler = JELoginHandlerBuilder.BuildDefault();
-            
-            if ((bool)ConfigManager.Config["autoSignIn"])
-            {
-                session = await loginHandler.Authenticate();
-                OnSignIn();
-            }
 
             if ((bool)ConfigManager.Config["autoUpdate"])
             {
                 this.BeginInvoke(new Action(() => AutoUpdater.Start("https://raw.githubusercontent.com/PolishBoi-Software/Yet-Another-Minecraft-Launcher/main/version.xml")));
+            }
+
+            if ((bool)ConfigManager.Config["autoSignIn"])
+            {
+                session = await loginHandler.Authenticate();
+                OnSignIn();
             }
         }
 
@@ -334,6 +358,11 @@ namespace YAMCL
             e.Cancel = true;
 
             ConfigManager.SaveConfig();
+
+            if (UpdateDownloadFinished)
+            {
+                var proc = Process.Start(UpdateFileName);
+            }
 
             e.Cancel = false;
         }

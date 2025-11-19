@@ -119,7 +119,7 @@
             // unameLbl
             // 
             this.unameLbl.Content = "USERNAME";
-            this.unameLbl.Font = new System.Drawing.Font("Inter Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.unameLbl.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Bold);
             this.unameLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.unameLbl.HorizontalAlignment = System.Drawing.StringAlignment.Near;
             this.unameLbl.Location = new System.Drawing.Point(82, 16);
@@ -493,7 +493,7 @@
             this.taskLbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.taskLbl.Content = "Nothing\\ to\\ do";
-            this.taskLbl.Font = new System.Drawing.Font("Inter Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.taskLbl.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Bold);
             this.taskLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.taskLbl.HorizontalAlignment = System.Drawing.StringAlignment.Far;
             this.taskLbl.Location = new System.Drawing.Point(447, 60);
@@ -507,7 +507,7 @@
             this.downloadProgressLbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.downloadProgressLbl.Content = "0\\ bytes\\ /\\ 0\\ bytes";
-            this.downloadProgressLbl.Font = new System.Drawing.Font("Inter Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.downloadProgressLbl.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Bold);
             this.downloadProgressLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.downloadProgressLbl.HorizontalAlignment = System.Drawing.StringAlignment.Near;
             this.downloadProgressLbl.Location = new System.Drawing.Point(82, 60);
