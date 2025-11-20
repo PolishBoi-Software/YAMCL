@@ -35,7 +35,7 @@ namespace YAMCL
         public MinecraftLauncher launcher = new MinecraftLauncher();
         private bool UpdateDownloadFinished;
         private string UpdateFileName;
-        private List<Process> processes = new List<Process>();
+        private List<ProcessWrapper> processes = new List<ProcessWrapper>();
 
         public MainForm()
         {
@@ -203,7 +203,7 @@ namespace YAMCL
             return InstanceManager.Instances.Find(i => i.Name == name) != null;
         }
 
-        private void createInst_Click(object sender, EventArgs e)
+        private void createInstBtn_Click(object sender, EventArgs e)
         {
             using (var dial = new InstanceDialog())
             {
@@ -220,15 +220,12 @@ namespace YAMCL
                     }
 
                     dial.InstanceObject.CreateDataFiles();
-                    InstanceManager.Instances.Clear();
-                    instanceList.Items.Clear();
-                    LoadInstances();
-                    instanceList.Refresh();
+                    RefreshInstances();
                 }
             }
         }
 
-        private void rmInstanceBtn_Click(object sender, EventArgs e)
+        private void rmInstBtn_Click(object sender, EventArgs e)
         {
             if (instanceList.SelectedItem == null)
                 return;
@@ -240,10 +237,7 @@ namespace YAMCL
                 instance.Remove();
 
                 InstanceManager.Instances.Remove(instance);
-                InstanceManager.Instances.Clear();
-                instanceList.Items.Clear();
-                LoadInstances();
-                instanceList.Refresh();
+                RefreshInstances();
 
                 MessageBox.Show($"Successfully removed instance \"{instance.Name}\"!", "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -329,16 +323,16 @@ namespace YAMCL
                     instance.CreateDataFiles();
                 }
 
-                var proc = await launcher.InstallAndBuildProcessAsync(instance.Version, new MLaunchOption()
+                var proc = new ProcessWrapper(await launcher.InstallAndBuildProcessAsync(instance.Version, new MLaunchOption()
                 {
                     Session = session,
                     MaximumRamMb = 4096,
                     Path = new MinecraftPath(instance.DirectoryPath)
-                });
+                }));
 
                 processes.Add(proc);
 
-                proc.Start();
+                proc.StartWithEvents();
             }
             catch (Exception ex)
             {
@@ -396,7 +390,7 @@ namespace YAMCL
             {
                 foreach (var proc in processes.ToList())
                 {
-                    if (proc.HasExited)
+                    if (proc.Process.HasExited)
                     {
                         processes.Remove(proc);
                         continue;
@@ -404,8 +398,8 @@ namespace YAMCL
 
                     try
                     {
-                        proc.Kill();
-                        proc.WaitForExit();
+                        proc.Process.Kill();
+                        proc.Process.WaitForExit();
                     }
                     catch (Exception ex)
                     {
@@ -413,7 +407,7 @@ namespace YAMCL
                     }
                     finally
                     {
-                        proc.Close();
+                        proc.Process.Close();
                         processes.Remove(proc);
                     }
                 }
@@ -453,6 +447,60 @@ namespace YAMCL
             {
                 MessageBox.Show(ex.ToString(), ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void RefreshInstances()
+        {
+            InstanceManager.Instances.Clear();
+            instanceList.Items.Clear();
+            LoadInstances();
+            instanceList.Refresh();
+        }
+
+        private void editInstBtn_Click(object sender, EventArgs e)
+        {
+            if (instanceList.SelectedItem == null)
+            {
+                MessageBox.Show("Please select an instance!", "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var instance = InstanceManager.Instances[instanceList.SelectedIndex];
+
+            using (var dial = new InstanceDialog())
+            {
+                var result = dial.ShowDialog();
+
+                if (result == DialogResult.OK && !dial.Failed)
+                {
+                    var msgRes = MessageBox.Show("This WILL overwrite all data inside that instance, are you sure?\n\nMake sure to back up anything important!", "YAMCL", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    
+                    if (msgRes == DialogResult.Yes)
+                    {
+                        var oldInst = instance;
+                        instance = dial.InstanceObject;
+                        InstanceManager.Instances[instanceList.SelectedIndex] = instance;
+
+                        Directory.Delete(oldInst.DirectoryPath, true);
+
+                        instance.CreateDataFiles();
+                        RefreshInstances();
+                    }
+                }
+            }
+        }
+
+        private void openInstDirBtn_Click(object sender, EventArgs e)
+        {
+            if (instanceList.SelectedItem == null)
+            {
+                MessageBox.Show("Please select an instance!", "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var instance = InstanceManager.Instances[instanceList.SelectedIndex];
+
+            Process.Start("explorer.exe", instance.DirectoryPath);
         }
     }
 }

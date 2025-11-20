@@ -1,3 +1,4 @@
 *.iss
 Output/
 bin/
+AppIcon.ico

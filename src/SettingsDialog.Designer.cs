@@ -44,6 +44,7 @@
             this.discordRpcCheck = new CuoreUI.Controls.cuiSwitch();
             this.discordRpcLblTooltip = new CuoreUI.Components.cuiTooltipHover(this.components);
             this.checkUpdateBtn = new CuoreUI.Controls.cuiButton();
+            this.displayLogsLblTooltip = new CuoreUI.Components.cuiTooltipHover(this.components);
             this.SuspendLayout();
             // 
             // okBtn
@@ -320,6 +321,14 @@
             this.checkUpdateBtn.TextOffset = new System.Drawing.Point(0, 0);
             this.checkUpdateBtn.Click += new System.EventHandler(this.checkUpdateBtn_Click);
             // 
+            // displayLogsLblTooltip
+            // 
+            this.displayLogsLblTooltip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(37)))));
+            this.displayLogsLblTooltip.Content = "Logs what Minecraft is doing.";
+            this.displayLogsLblTooltip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.displayLogsLblTooltip.TooltipPosition = CuoreUI.Components.cuiTooltipHover.Position.Top;
+            this.displayLogsLblTooltip.TooltipPositionOffset = new System.Drawing.Size(0, 0);
+            // 
             // SettingsDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -368,5 +377,6 @@
         private CuoreUI.Controls.cuiSwitch discordRpcCheck;
         private CuoreUI.Components.cuiTooltipHover discordRpcLblTooltip;
         private CuoreUI.Controls.cuiButton checkUpdateBtn;
+        private CuoreUI.Components.cuiTooltipHover displayLogsLblTooltip;
     }
 }

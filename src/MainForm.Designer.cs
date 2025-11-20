@@ -37,8 +37,8 @@
             this.uuidLbl = new CuoreUI.Controls.cuiLabel();
             this.launchBtn = new CuoreUI.Controls.cuiButton();
             this.instanceList = new CuoreUI.Controls.cuiListbox();
-            this.cuiResizeGrip1 = new CuoreUI.Controls.cuiResizeGrip();
-            this.createInst = new CuoreUI.Controls.cuiButton();
+            this.resizeGrip = new CuoreUI.Controls.cuiResizeGrip();
+            this.createInstBtn = new CuoreUI.Controls.cuiButton();
             this.closeBtn = new CuoreUI.Controls.cuiButton();
             this.miniBtn = new CuoreUI.Controls.cuiButton();
             this.maxBtn = new CuoreUI.Controls.cuiButton();
@@ -46,7 +46,7 @@
             this.closeBtnTooltip = new CuoreUI.Components.cuiTooltipHover(this.components);
             this.maxBtnTooltip = new CuoreUI.Components.cuiTooltipHover(this.components);
             this.miniBtnTooltip = new CuoreUI.Components.cuiTooltipHover(this.components);
-            this.rmInstanceBtn = new CuoreUI.Controls.cuiButton();
+            this.rmInstBtn = new CuoreUI.Controls.cuiButton();
             this.progBar = new CuoreUI.Controls.cuiProgressBarHorizontal();
             this.taskLbl = new CuoreUI.Controls.cuiLabel();
             this.downloadProgressLbl = new CuoreUI.Controls.cuiLabel();
@@ -55,6 +55,8 @@
             this.settingsBtn = new CuoreUI.Controls.cuiButton();
             this.killBtn = new CuoreUI.Controls.cuiButton();
             this.addModBtn = new CuoreUI.Controls.cuiButton();
+            this.openInstDirBtn = new CuoreUI.Controls.cuiButton();
+            this.editInstBtn = new CuoreUI.Controls.cuiButton();
             ((System.ComponentModel.ISupportInitialize)(this.playerHead)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,7 +90,7 @@
             this.signInBtn.ImageAutoCenter = true;
             this.signInBtn.ImageExpand = new System.Drawing.Point(0, 0);
             this.signInBtn.ImageOffset = new System.Drawing.Point(0, 0);
-            this.signInBtn.Location = new System.Drawing.Point(965, 53);
+            this.signInBtn.Location = new System.Drawing.Point(1011, 53);
             this.signInBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.signInBtn.Name = "signInBtn";
             this.signInBtn.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
@@ -142,7 +144,6 @@
             // 
             // launchBtn
             // 
-            this.launchBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.launchBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
             this.launchBtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.launchBtn.CheckButton = false;
@@ -164,7 +165,7 @@
             this.launchBtn.ImageAutoCenter = true;
             this.launchBtn.ImageExpand = new System.Drawing.Point(0, 0);
             this.launchBtn.ImageOffset = new System.Drawing.Point(0, 0);
-            this.launchBtn.Location = new System.Drawing.Point(965, 536);
+            this.launchBtn.Location = new System.Drawing.Point(13, 118);
             this.launchBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.launchBtn.Name = "launchBtn";
             this.launchBtn.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
@@ -203,72 +204,72 @@
             this.instanceList.ItemHoverForegroundColor = System.Drawing.Color.DimGray;
             this.instanceList.ItemRounding = 12;
             this.instanceList.ItemSelectedBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(71)))), ((int)(((byte)(90)))));
-            this.instanceList.Location = new System.Drawing.Point(12, 118);
+            this.instanceList.Location = new System.Drawing.Point(12, 185);
             this.instanceList.Name = "instanceList";
             this.instanceList.OutlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.instanceList.Rounding = new System.Windows.Forms.Padding(8);
             this.instanceList.SelectedForegroundColor = System.Drawing.Color.White;
-            this.instanceList.Size = new System.Drawing.Size(946, 476);
+            this.instanceList.Size = new System.Drawing.Size(992, 510);
             this.instanceList.TabIndex = 6;
             // 
-            // cuiResizeGrip1
+            // resizeGrip
             // 
-            this.cuiResizeGrip1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cuiResizeGrip1.Cursor = System.Windows.Forms.Cursors.SizeNWSE;
-            this.cuiResizeGrip1.GripColor = System.Drawing.Color.Gray;
-            this.cuiResizeGrip1.GripSize = 2;
-            this.cuiResizeGrip1.GripTexture = true;
-            this.cuiResizeGrip1.Location = new System.Drawing.Point(1140, 601);
-            this.cuiResizeGrip1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.cuiResizeGrip1.Name = "cuiResizeGrip1";
-            this.cuiResizeGrip1.Size = new System.Drawing.Size(16, 14);
-            this.cuiResizeGrip1.SkipBottomRightSquare = false;
-            this.cuiResizeGrip1.TabIndex = 9;
-            this.cuiResizeGrip1.TargetForm = this;
-            this.cuiResizeGrip1.TextureOffset = new System.Drawing.Size(-2, -2);
+            this.resizeGrip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.resizeGrip.Cursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.resizeGrip.GripColor = System.Drawing.Color.Gray;
+            this.resizeGrip.GripSize = 2;
+            this.resizeGrip.GripTexture = true;
+            this.resizeGrip.Location = new System.Drawing.Point(1184, 694);
+            this.resizeGrip.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.resizeGrip.Name = "resizeGrip";
+            this.resizeGrip.Size = new System.Drawing.Size(18, 18);
+            this.resizeGrip.SkipBottomRightSquare = false;
+            this.resizeGrip.TabIndex = 9;
+            this.resizeGrip.TargetForm = this;
+            this.resizeGrip.TextureOffset = new System.Drawing.Size(-2, -2);
             // 
-            // createInst
+            // createInstBtn
             // 
-            this.createInst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.createInst.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
-            this.createInst.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.createInst.CheckButton = false;
-            this.createInst.Checked = false;
-            this.createInst.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.createInst.CheckedForeColor = System.Drawing.Color.White;
-            this.createInst.CheckedImageTint = System.Drawing.Color.White;
-            this.createInst.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.createInst.Content = "Create instance";
-            this.createInst.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.createInst.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.createInst.Font = new System.Drawing.Font("Inter", 12F);
-            this.createInst.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
-            this.createInst.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(44)))));
-            this.createInst.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
-            this.createInst.HoverImageTint = System.Drawing.Color.White;
-            this.createInst.HoverOutline = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.createInst.Image = null;
-            this.createInst.ImageAutoCenter = true;
-            this.createInst.ImageExpand = new System.Drawing.Point(0, 0);
-            this.createInst.ImageOffset = new System.Drawing.Point(0, 0);
-            this.createInst.Location = new System.Drawing.Point(965, 122);
-            this.createInst.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.createInst.Name = "createInst";
-            this.createInst.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
-            this.createInst.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
-            this.createInst.NormalImageTint = System.Drawing.Color.White;
-            this.createInst.NormalOutline = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.createInst.OutlineThickness = 1F;
-            this.createInst.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
-            this.createInst.PressedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
-            this.createInst.PressedImageTint = System.Drawing.Color.White;
-            this.createInst.PressedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.createInst.Rounding = new System.Windows.Forms.Padding(8);
-            this.createInst.Size = new System.Drawing.Size(178, 59);
-            this.createInst.TabIndex = 10;
-            this.createInst.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.createInst.TextOffset = new System.Drawing.Point(0, 0);
-            this.createInst.Click += new System.EventHandler(this.createInst_Click);
+            this.createInstBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.createInstBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.createInstBtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.createInstBtn.CheckButton = false;
+            this.createInstBtn.Checked = false;
+            this.createInstBtn.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.createInstBtn.CheckedForeColor = System.Drawing.Color.White;
+            this.createInstBtn.CheckedImageTint = System.Drawing.Color.White;
+            this.createInstBtn.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.createInstBtn.Content = "Create instance";
+            this.createInstBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.createInstBtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.createInstBtn.Font = new System.Drawing.Font("Inter", 12F);
+            this.createInstBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.createInstBtn.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(44)))));
+            this.createInstBtn.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.createInstBtn.HoverImageTint = System.Drawing.Color.White;
+            this.createInstBtn.HoverOutline = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.createInstBtn.Image = null;
+            this.createInstBtn.ImageAutoCenter = true;
+            this.createInstBtn.ImageExpand = new System.Drawing.Point(0, 0);
+            this.createInstBtn.ImageOffset = new System.Drawing.Point(0, 0);
+            this.createInstBtn.Location = new System.Drawing.Point(1011, 636);
+            this.createInstBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.createInstBtn.Name = "createInstBtn";
+            this.createInstBtn.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.createInstBtn.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.createInstBtn.NormalImageTint = System.Drawing.Color.White;
+            this.createInstBtn.NormalOutline = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.createInstBtn.OutlineThickness = 1F;
+            this.createInstBtn.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.createInstBtn.PressedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.createInstBtn.PressedImageTint = System.Drawing.Color.White;
+            this.createInstBtn.PressedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.createInstBtn.Rounding = new System.Windows.Forms.Padding(8);
+            this.createInstBtn.Size = new System.Drawing.Size(178, 59);
+            this.createInstBtn.TabIndex = 10;
+            this.createInstBtn.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.createInstBtn.TextOffset = new System.Drawing.Point(0, 0);
+            this.createInstBtn.Click += new System.EventHandler(this.createInstBtn_Click);
             // 
             // closeBtn
             // 
@@ -294,7 +295,7 @@
             this.closeBtn.ImageAutoCenter = true;
             this.closeBtn.ImageExpand = new System.Drawing.Point(0, 0);
             this.closeBtn.ImageOffset = new System.Drawing.Point(0, 0);
-            this.closeBtn.Location = new System.Drawing.Point(1120, 4);
+            this.closeBtn.Location = new System.Drawing.Point(1166, 4);
             this.closeBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.closeBtn.Name = "closeBtn";
             this.closeBtn.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
@@ -337,7 +338,7 @@
             this.miniBtn.ImageAutoCenter = true;
             this.miniBtn.ImageExpand = new System.Drawing.Point(0, 0);
             this.miniBtn.ImageOffset = new System.Drawing.Point(0, 0);
-            this.miniBtn.Location = new System.Drawing.Point(1058, 4);
+            this.miniBtn.Location = new System.Drawing.Point(1104, 4);
             this.miniBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.miniBtn.Name = "miniBtn";
             this.miniBtn.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
@@ -380,7 +381,7 @@
             this.maxBtn.ImageAutoCenter = true;
             this.maxBtn.ImageExpand = new System.Drawing.Point(0, 0);
             this.maxBtn.ImageOffset = new System.Drawing.Point(0, 0);
-            this.maxBtn.Location = new System.Drawing.Point(1089, 4);
+            this.maxBtn.Location = new System.Drawing.Point(1135, 4);
             this.maxBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.maxBtn.Name = "maxBtn";
             this.maxBtn.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
@@ -430,48 +431,48 @@
             this.miniBtnTooltip.TooltipPosition = CuoreUI.Components.cuiTooltipHover.Position.Top;
             this.miniBtnTooltip.TooltipPositionOffset = new System.Drawing.Size(0, 0);
             // 
-            // rmInstanceBtn
+            // rmInstBtn
             // 
-            this.rmInstanceBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rmInstanceBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
-            this.rmInstanceBtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.rmInstanceBtn.CheckButton = false;
-            this.rmInstanceBtn.Checked = false;
-            this.rmInstanceBtn.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.rmInstanceBtn.CheckedForeColor = System.Drawing.Color.White;
-            this.rmInstanceBtn.CheckedImageTint = System.Drawing.Color.White;
-            this.rmInstanceBtn.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.rmInstanceBtn.Content = "Remove instance";
-            this.rmInstanceBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rmInstanceBtn.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.rmInstanceBtn.Font = new System.Drawing.Font("Inter", 12F);
-            this.rmInstanceBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
-            this.rmInstanceBtn.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(44)))));
-            this.rmInstanceBtn.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
-            this.rmInstanceBtn.HoverImageTint = System.Drawing.Color.White;
-            this.rmInstanceBtn.HoverOutline = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.rmInstanceBtn.Image = null;
-            this.rmInstanceBtn.ImageAutoCenter = true;
-            this.rmInstanceBtn.ImageExpand = new System.Drawing.Point(0, 0);
-            this.rmInstanceBtn.ImageOffset = new System.Drawing.Point(0, 0);
-            this.rmInstanceBtn.Location = new System.Drawing.Point(965, 191);
-            this.rmInstanceBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.rmInstanceBtn.Name = "rmInstanceBtn";
-            this.rmInstanceBtn.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
-            this.rmInstanceBtn.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
-            this.rmInstanceBtn.NormalImageTint = System.Drawing.Color.White;
-            this.rmInstanceBtn.NormalOutline = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.rmInstanceBtn.OutlineThickness = 1F;
-            this.rmInstanceBtn.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
-            this.rmInstanceBtn.PressedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
-            this.rmInstanceBtn.PressedImageTint = System.Drawing.Color.White;
-            this.rmInstanceBtn.PressedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.rmInstanceBtn.Rounding = new System.Windows.Forms.Padding(8);
-            this.rmInstanceBtn.Size = new System.Drawing.Size(178, 59);
-            this.rmInstanceBtn.TabIndex = 14;
-            this.rmInstanceBtn.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.rmInstanceBtn.TextOffset = new System.Drawing.Point(0, 0);
-            this.rmInstanceBtn.Click += new System.EventHandler(this.rmInstanceBtn_Click);
+            this.rmInstBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.rmInstBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.rmInstBtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.rmInstBtn.CheckButton = false;
+            this.rmInstBtn.Checked = false;
+            this.rmInstBtn.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.rmInstBtn.CheckedForeColor = System.Drawing.Color.White;
+            this.rmInstBtn.CheckedImageTint = System.Drawing.Color.White;
+            this.rmInstBtn.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.rmInstBtn.Content = "Remove instance";
+            this.rmInstBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rmInstBtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.rmInstBtn.Font = new System.Drawing.Font("Inter", 12F);
+            this.rmInstBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.rmInstBtn.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(44)))));
+            this.rmInstBtn.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.rmInstBtn.HoverImageTint = System.Drawing.Color.White;
+            this.rmInstBtn.HoverOutline = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.rmInstBtn.Image = null;
+            this.rmInstBtn.ImageAutoCenter = true;
+            this.rmInstBtn.ImageExpand = new System.Drawing.Point(0, 0);
+            this.rmInstBtn.ImageOffset = new System.Drawing.Point(0, 0);
+            this.rmInstBtn.Location = new System.Drawing.Point(1011, 568);
+            this.rmInstBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.rmInstBtn.Name = "rmInstBtn";
+            this.rmInstBtn.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.rmInstBtn.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.rmInstBtn.NormalImageTint = System.Drawing.Color.White;
+            this.rmInstBtn.NormalOutline = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.rmInstBtn.OutlineThickness = 1F;
+            this.rmInstBtn.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.rmInstBtn.PressedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.rmInstBtn.PressedImageTint = System.Drawing.Color.White;
+            this.rmInstBtn.PressedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.rmInstBtn.Rounding = new System.Windows.Forms.Padding(8);
+            this.rmInstBtn.Size = new System.Drawing.Size(178, 59);
+            this.rmInstBtn.TabIndex = 14;
+            this.rmInstBtn.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.rmInstBtn.TextOffset = new System.Drawing.Point(0, 0);
+            this.rmInstBtn.Click += new System.EventHandler(this.rmInstBtn_Click);
             // 
             // progBar
             // 
@@ -484,7 +485,7 @@
             this.progBar.MaxValue = 100;
             this.progBar.Name = "progBar";
             this.progBar.Rounding = 8;
-            this.progBar.Size = new System.Drawing.Size(946, 26);
+            this.progBar.Size = new System.Drawing.Size(992, 26);
             this.progBar.TabIndex = 15;
             this.progBar.Value = 0;
             // 
@@ -498,7 +499,7 @@
             this.taskLbl.HorizontalAlignment = System.Drawing.StringAlignment.Far;
             this.taskLbl.Location = new System.Drawing.Point(447, 60);
             this.taskLbl.Name = "taskLbl";
-            this.taskLbl.Size = new System.Drawing.Size(511, 20);
+            this.taskLbl.Size = new System.Drawing.Size(557, 20);
             this.taskLbl.TabIndex = 16;
             this.taskLbl.VerticalAlignment = System.Drawing.StringAlignment.Near;
             // 
@@ -512,7 +513,7 @@
             this.downloadProgressLbl.HorizontalAlignment = System.Drawing.StringAlignment.Near;
             this.downloadProgressLbl.Location = new System.Drawing.Point(82, 60);
             this.downloadProgressLbl.Name = "downloadProgressLbl";
-            this.downloadProgressLbl.Size = new System.Drawing.Size(457, 20);
+            this.downloadProgressLbl.Size = new System.Drawing.Size(503, 20);
             this.downloadProgressLbl.TabIndex = 17;
             this.downloadProgressLbl.VerticalAlignment = System.Drawing.StringAlignment.Near;
             // 
@@ -534,7 +535,7 @@
             // 
             // settingsBtn
             // 
-            this.settingsBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.settingsBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.settingsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
             this.settingsBtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.settingsBtn.CheckButton = false;
@@ -556,7 +557,7 @@
             this.settingsBtn.ImageAutoCenter = true;
             this.settingsBtn.ImageExpand = new System.Drawing.Point(0, 0);
             this.settingsBtn.ImageOffset = new System.Drawing.Point(0, 0);
-            this.settingsBtn.Location = new System.Drawing.Point(965, 398);
+            this.settingsBtn.Location = new System.Drawing.Point(1011, 120);
             this.settingsBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.settingsBtn.Name = "settingsBtn";
             this.settingsBtn.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
@@ -577,7 +578,6 @@
             // 
             // killBtn
             // 
-            this.killBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.killBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
             this.killBtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.killBtn.CheckButton = false;
@@ -599,7 +599,7 @@
             this.killBtn.ImageAutoCenter = true;
             this.killBtn.ImageExpand = new System.Drawing.Point(0, 0);
             this.killBtn.ImageOffset = new System.Drawing.Point(0, 0);
-            this.killBtn.Location = new System.Drawing.Point(965, 467);
+            this.killBtn.Location = new System.Drawing.Point(199, 118);
             this.killBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.killBtn.Name = "killBtn";
             this.killBtn.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
@@ -642,7 +642,7 @@
             this.addModBtn.ImageAutoCenter = true;
             this.addModBtn.ImageExpand = new System.Drawing.Point(0, 0);
             this.addModBtn.ImageOffset = new System.Drawing.Point(0, 0);
-            this.addModBtn.Location = new System.Drawing.Point(965, 260);
+            this.addModBtn.Location = new System.Drawing.Point(825, 120);
             this.addModBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.addModBtn.Name = "addModBtn";
             this.addModBtn.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
@@ -661,23 +661,110 @@
             this.addModBtn.TextOffset = new System.Drawing.Point(0, 0);
             this.addModBtn.Click += new System.EventHandler(this.addModBtn_Click);
             // 
+            // openInstDirBtn
+            // 
+            this.openInstDirBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.openInstDirBtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.openInstDirBtn.CheckButton = false;
+            this.openInstDirBtn.Checked = false;
+            this.openInstDirBtn.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.openInstDirBtn.CheckedForeColor = System.Drawing.Color.White;
+            this.openInstDirBtn.CheckedImageTint = System.Drawing.Color.White;
+            this.openInstDirBtn.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.openInstDirBtn.Content = "Open folder";
+            this.openInstDirBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.openInstDirBtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.openInstDirBtn.Font = new System.Drawing.Font("Inter", 12F);
+            this.openInstDirBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.openInstDirBtn.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(44)))));
+            this.openInstDirBtn.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.openInstDirBtn.HoverImageTint = System.Drawing.Color.White;
+            this.openInstDirBtn.HoverOutline = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.openInstDirBtn.Image = null;
+            this.openInstDirBtn.ImageAutoCenter = true;
+            this.openInstDirBtn.ImageExpand = new System.Drawing.Point(0, 0);
+            this.openInstDirBtn.ImageOffset = new System.Drawing.Point(0, 0);
+            this.openInstDirBtn.Location = new System.Drawing.Point(639, 120);
+            this.openInstDirBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.openInstDirBtn.Name = "openInstDirBtn";
+            this.openInstDirBtn.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.openInstDirBtn.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.openInstDirBtn.NormalImageTint = System.Drawing.Color.White;
+            this.openInstDirBtn.NormalOutline = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.openInstDirBtn.OutlineThickness = 1F;
+            this.openInstDirBtn.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.openInstDirBtn.PressedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.openInstDirBtn.PressedImageTint = System.Drawing.Color.White;
+            this.openInstDirBtn.PressedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.openInstDirBtn.Rounding = new System.Windows.Forms.Padding(8);
+            this.openInstDirBtn.Size = new System.Drawing.Size(178, 59);
+            this.openInstDirBtn.TabIndex = 21;
+            this.openInstDirBtn.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.openInstDirBtn.TextOffset = new System.Drawing.Point(0, 0);
+            this.openInstDirBtn.Click += new System.EventHandler(this.openInstDirBtn_Click);
+            // 
+            // editInstBtn
+            // 
+            this.editInstBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.editInstBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.editInstBtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.editInstBtn.CheckButton = false;
+            this.editInstBtn.Checked = false;
+            this.editInstBtn.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.editInstBtn.CheckedForeColor = System.Drawing.Color.White;
+            this.editInstBtn.CheckedImageTint = System.Drawing.Color.White;
+            this.editInstBtn.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.editInstBtn.Content = "Edit instance";
+            this.editInstBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.editInstBtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.editInstBtn.Font = new System.Drawing.Font("Inter", 12F);
+            this.editInstBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.editInstBtn.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(44)))));
+            this.editInstBtn.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.editInstBtn.HoverImageTint = System.Drawing.Color.White;
+            this.editInstBtn.HoverOutline = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.editInstBtn.Image = null;
+            this.editInstBtn.ImageAutoCenter = true;
+            this.editInstBtn.ImageExpand = new System.Drawing.Point(0, 0);
+            this.editInstBtn.ImageOffset = new System.Drawing.Point(0, 0);
+            this.editInstBtn.Location = new System.Drawing.Point(1011, 499);
+            this.editInstBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.editInstBtn.Name = "editInstBtn";
+            this.editInstBtn.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.editInstBtn.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.editInstBtn.NormalImageTint = System.Drawing.Color.White;
+            this.editInstBtn.NormalOutline = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.editInstBtn.OutlineThickness = 1F;
+            this.editInstBtn.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.editInstBtn.PressedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.editInstBtn.PressedImageTint = System.Drawing.Color.White;
+            this.editInstBtn.PressedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.editInstBtn.Rounding = new System.Windows.Forms.Padding(8);
+            this.editInstBtn.Size = new System.Drawing.Size(178, 59);
+            this.editInstBtn.TabIndex = 22;
+            this.editInstBtn.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.editInstBtn.TextOffset = new System.Drawing.Point(0, 0);
+            this.editInstBtn.Click += new System.EventHandler(this.editInstBtn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(37)))));
-            this.ClientSize = new System.Drawing.Size(1156, 615);
+            this.ClientSize = new System.Drawing.Size(1202, 712);
+            this.Controls.Add(this.editInstBtn);
+            this.Controls.Add(this.openInstDirBtn);
             this.Controls.Add(this.addModBtn);
             this.Controls.Add(this.killBtn);
             this.Controls.Add(this.settingsBtn);
             this.Controls.Add(this.taskLbl);
             this.Controls.Add(this.progBar);
-            this.Controls.Add(this.rmInstanceBtn);
+            this.Controls.Add(this.rmInstBtn);
             this.Controls.Add(this.maxBtn);
             this.Controls.Add(this.miniBtn);
             this.Controls.Add(this.closeBtn);
-            this.Controls.Add(this.createInst);
-            this.Controls.Add(this.cuiResizeGrip1);
+            this.Controls.Add(this.createInstBtn);
+            this.Controls.Add(this.resizeGrip);
             this.Controls.Add(this.instanceList);
             this.Controls.Add(this.launchBtn);
             this.Controls.Add(this.uuidLbl);
@@ -709,8 +796,8 @@
         private CuoreUI.Controls.cuiLabel uuidLbl;
         private CuoreUI.Controls.cuiButton launchBtn;
         private CuoreUI.Controls.cuiListbox instanceList;
-        private CuoreUI.Controls.cuiResizeGrip cuiResizeGrip1;
-        private CuoreUI.Controls.cuiButton createInst;
+        private CuoreUI.Controls.cuiResizeGrip resizeGrip;
+        private CuoreUI.Controls.cuiButton createInstBtn;
         private CuoreUI.Controls.cuiButton maxBtn;
         private CuoreUI.Controls.cuiButton miniBtn;
         private CuoreUI.Controls.cuiButton closeBtn;
@@ -718,7 +805,7 @@
         private CuoreUI.Components.cuiTooltipHover closeBtnTooltip;
         private CuoreUI.Components.cuiTooltipHover maxBtnTooltip;
         private CuoreUI.Components.cuiTooltipHover miniBtnTooltip;
-        private CuoreUI.Controls.cuiButton rmInstanceBtn;
+        private CuoreUI.Controls.cuiButton rmInstBtn;
         private CuoreUI.Controls.cuiProgressBarHorizontal progBar;
         private CuoreUI.Controls.cuiLabel taskLbl;
         private CuoreUI.Controls.cuiLabel downloadProgressLbl;
@@ -727,6 +814,8 @@
         private CuoreUI.Controls.cuiButton settingsBtn;
         private CuoreUI.Controls.cuiButton killBtn;
         private CuoreUI.Controls.cuiButton addModBtn;
+        private CuoreUI.Controls.cuiButton openInstDirBtn;
+        private CuoreUI.Controls.cuiButton editInstBtn;
     }
 }
 

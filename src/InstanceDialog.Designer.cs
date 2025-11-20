@@ -302,7 +302,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Create new instance";
+            this.Text = "Create or edit an instance";
             this.Load += new System.EventHandler(this.InstanceDialog_Load);
             this.ResumeLayout(false);
 
