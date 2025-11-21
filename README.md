@@ -19,3 +19,7 @@ A Minecraft launcher that tries to be good.
 
 # Why?
 I was bored. I don't regret making this, though...!<br>This is also a personal project.
+
+# Discord Server
+That's right! YAMCL has a Discord server now!
+[Click here to join](https://discord.gg/8KAtkftPDu)
