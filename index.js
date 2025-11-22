@@ -3,13 +3,13 @@ $(".discord-server-join").click(function() {
 });
 
 $(".gh-repo-view").click(function() {
-    window.open("https://github.com/PolishBoi-Software/Yet-Another-Minecraft-Launcher", "_blank")
+    window.open("https://github.com/PolishBoi-Software/YAMCL", "_blank")
 });
 
 $(".download").click(function() {
-    window.open("https://github.com/PolishBoi-Software/Yet-Another-Minecraft-Launcher/releases/latest/download/YAMCL-setup.exe", "_blank")
+    window.open("https://github.com/PolishBoi-Software/YAMCL/releases/latest/download/YAMCL-setup.exe", "_blank")
 });
 
 $(".changelog").click(function() {
-    window.open("https://github.com/PolishBoi-Software/Yet-Another-Minecraft-Launcher/releases/latest/", "_blank")
+    window.open("https://github.com/PolishBoi-Software/YAMCL/releases/latest/", "_blank")
 });
