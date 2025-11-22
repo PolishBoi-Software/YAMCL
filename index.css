@@ -51,18 +51,10 @@ body {
     background-color: #21262d;
 }
 
-.gh-repo-view:hover {
-    background-color: #30363d;
-}
-
 .discord-server-join {
     border: white;
     color: white;
     background-color: #5865f2;
-}
-
-.discord-server-join:hover {
-    background-color: #4752c4;
 }
 
 .card {
