@@ -72,8 +72,6 @@ namespace YAMCL
 
             foreach (var version in versions)
             {
-                if (version.Type == "local") continue;
-
                 versionList.Items.Add(version);
             }
         }

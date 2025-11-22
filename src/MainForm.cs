@@ -29,8 +29,6 @@ namespace YAMCL
 {
     public partial class MainForm : Form
     {
-        private JELoginHandler loginHandler;
-        private MSession session;
         public bool checkForUpdateBtnClicked = false;
         public MinecraftLauncher launcher = new MinecraftLauncher();
         private bool UpdateDownloadFinished;
@@ -40,47 +38,69 @@ namespace YAMCL
         public MainForm()
         {
             InitializeComponent();
+            AuthManager.OnSignIn += AuthManager_OnSignIn;
+            AuthManager.OnSignOut += AuthManager_OnSignOut;
+            AuthManager.OnAuthError += AuthManager_OnAuthError;
         }
 
-        private void OnSignOut()
+        private void AuthManager_OnAuthError(object sender, Exception e)
+        {
+            MessageBox.Show(e.ToString(), e.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void AuthManager_OnSignOut(object sender, EventArgs e)
         {
             signInBtn.Content = "Sign in";
             playerHead.Image = null;
             unameLbl.Content = "USERNAME";
             uuidLbl.Content = "UUID";
+            MessageBox.Show("Successfully signed out!", "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void OnSignIn()
+        private void AuthManager_OnSignIn(object sender, MSession e)
         {
             signInBtn.Content = "Sign out";
-            string url = $"https://nmsr.nickac.dev/bust/{session.UUID}";
+            string url = $"https://nmsr.nickac.dev/bust/{e.UUID}";
             playerHead.ImageLocation = url;
+            string nonMsLabel = !AuthManager.IsMicrosoft ? " [OFFLINE]" : string.Empty;
+            unameLbl.Content = e.Username + nonMsLabel;
+            uuidLbl.Content = e.UUID;
 
-            unameLbl.Content = session.Username;
-            uuidLbl.Content = session.UUID;
+            if (AuthManager.IsMicrosoft)
+                MessageBox.Show($"Successfully signed in as {e.Username}!", "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private async void signInBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                if (session != null)
+                if (AuthManager.Session != null)
                 {
                     var result = MessageBox.Show("Are you sure you want to sign out?", "YAMCL", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    
                     if (result == DialogResult.Yes)
-                    {
-                        await loginHandler.Signout();
-                        session = null;
-                        OnSignOut();
-                        MessageBox.Show("Successfully signed out!", "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                        await AuthManager.SignOut();
+
                     return;
                 }
 
-                session = await loginHandler.Authenticate();
-                OnSignIn();
+                var msgResult = MessageBox.Show("Sign in using a Microsoft account?", "YAMCL", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if (msgResult == DialogResult.Yes)
+                {
+                    await AuthManager.LogInWithMicrosoft();
+                }
+                else if (msgResult == DialogResult.No)
+                {
+                    using (var dial = new AuthDialog())
+                    {
+                        var dialResult = dial.ShowDialog();
 
-                MessageBox.Show($"Successfully signed in as {session.Username}", "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (dialResult == DialogResult.OK)
+                        {
+                            AuthManager.LogInOffline(dial.Username, MessageBox.Show("Use legacy session?", "YAMCL", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes);
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -146,7 +166,6 @@ namespace YAMCL
 
             ConfigManager.LoadConfig();
             LoadInstances();
-            loginHandler = JELoginHandlerBuilder.BuildDefault();
 
             if ((bool)ConfigManager.Config["autoUpdate"])
             {
@@ -155,8 +174,23 @@ namespace YAMCL
 
             if ((bool)ConfigManager.Config["autoSignIn"])
             {
-                session = await loginHandler.Authenticate();
-                OnSignIn();
+                var msgResult = MessageBox.Show("Sign in using a Microsoft account?", "YAMCL", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (msgResult == DialogResult.Yes)
+                {
+                    await AuthManager.LogInWithMicrosoft();
+                }
+                else if (msgResult == DialogResult.No)
+                {
+                    using (var dial = new AuthDialog())
+                    {
+                        var dialResult = dial.ShowDialog();
+
+                        if (dialResult == DialogResult.OK)
+                        {
+                            AuthManager.LogInOffline(dial.Username, MessageBox.Show("Use legacy session?", "YAMCL", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes);
+                        }
+                    }
+                }
             }
 
             if ((bool)ConfigManager.Config["discordRpc"])
@@ -283,7 +317,7 @@ namespace YAMCL
                     return;
                 }
 
-                if (session == null)
+                if (AuthManager.Session == null)
                 {
                     MessageBox.Show("Please sign in!", "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -325,7 +359,7 @@ namespace YAMCL
 
                 var proc = new ProcessWrapper(await launcher.InstallAndBuildProcessAsync(instance.Version, new MLaunchOption()
                 {
-                    Session = session,
+                    Session = AuthManager.Session,
                     MaximumRamMb = 4096,
                     Path = new MinecraftPath(instance.DirectoryPath)
                 }));

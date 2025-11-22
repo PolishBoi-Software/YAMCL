@@ -92,6 +92,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AuthDialog.Designer.cs">
+      <DependentUpon>AuthDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConfigManager.cs" />
     <Compile Include="InstanceDialog.cs">
       <SubType>Form</SubType>
@@ -122,6 +128,9 @@
     <Compile Include="UpdateDialog.Designer.cs">
       <DependentUpon>UpdateDialog.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AuthDialog.resx">
+      <DependentUpon>AuthDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InstanceDialog.resx">
       <DependentUpon>InstanceDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -207,6 +216,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AppIcon.ico" />
+    <Compile Include="AuthManager.cs" />
     <Content Include="YAMCLIcon.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -11,15 +11,14 @@
 A Minecraft launcher that tries to be good.
 
 # Features
-- Microsoft Authentication
+- Both MS login and offline login
 - Instances (Saved in user's AppData)
 - Good looking UI (Thank you, [CuoreUI](https://github.com/owtysm2/CuoreUI)!)
 - Mod loader support
 - Discord Rich Presence
 
 # Why?
-I was bored. I don't regret making this, though...!<br>This is also a personal project.
+I was bored. I don't regret making this, though...!
 
 # Discord Server
-That's right! YAMCL has a Discord server now!
-[Click here to join](https://discord.gg/8KAtkftPDu)
+That's right! YAMCL has a Discord server now!<br>[Click here to join!](https://discord.gg/8KAtkftPDu)

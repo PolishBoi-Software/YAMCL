@@ -126,7 +126,8 @@
             // autoSignInLblTooltip
             // 
             this.autoSignInLblTooltip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(37)))));
-            this.autoSignInLblTooltip.Content = "Automatically signs in with your Microsoft account on startup.";
+            this.autoSignInLblTooltip.Content = "Asks you if you want to sign in with a Microsoft account (or an offline one) on s" +
+    "tartup.";
             this.autoSignInLblTooltip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.autoSignInLblTooltip.TargetControl = this.autoSignInLbl;
             this.autoSignInLblTooltip.TooltipPosition = CuoreUI.Components.cuiTooltipHover.Position.Top;
@@ -326,6 +327,7 @@
             this.displayLogsLblTooltip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(37)))));
             this.displayLogsLblTooltip.Content = "Logs what Minecraft is doing.";
             this.displayLogsLblTooltip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.displayLogsLblTooltip.TargetControl = null;
             this.displayLogsLblTooltip.TooltipPosition = CuoreUI.Components.cuiTooltipHover.Position.Top;
             this.displayLogsLblTooltip.TooltipPositionOffset = new System.Drawing.Size(0, 0);
             // 
