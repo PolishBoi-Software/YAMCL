@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using CmlLib.Core.ProcessBuilder;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,12 +21,13 @@ namespace YAMCL
             None
         }
 
-        private Dictionary<string, string> jsonHelper = new Dictionary<string, string>();
+        private Dictionary<string, object> jsonHelper = new Dictionary<string, object>();
         public string Name { get; set; }
         public string Version { get; set; }
         public string BaseVersion { get; set; }
         public string DirectoryPath { get; set; }
         public ModLoader Loader { get; set; }
+        public MLaunchOption LaunchOptions { get; set; } = new MLaunchOption();
 
         public MinecraftInstance(string name, string version, ModLoader loader, string dirPath)
         {
@@ -40,17 +42,19 @@ namespace YAMCL
             try
             {
                 string instancesDirPath = Path.Combine(Program.YAMCLFolder, "instances");
-                string instancePath = Path.Combine(instancesDirPath, Name);
 
-                if (!Directory.Exists(instancePath))
-                    Directory.CreateDirectory(instancePath);
+                if (!Directory.Exists(DirectoryPath))
+                    Directory.CreateDirectory(DirectoryPath);
 
-                string dataFile = Path.Combine(instancePath, "instance.json");
+                string dataFile = Path.Combine(DirectoryPath, "instance.json");
 
                 jsonHelper.Add("name", Name);
                 jsonHelper.Add("baseVersion", BaseVersion);
                 jsonHelper.Add("version", Version);
                 jsonHelper.Add("loader", Loader.ToString());
+                jsonHelper.Add("fullscreen", LaunchOptions.FullScreen);
+                jsonHelper.Add("width", LaunchOptions.ScreenWidth);
+                jsonHelper.Add("height", LaunchOptions.ScreenHeight);
 
                 File.WriteAllText(dataFile, JsonConvert.SerializeObject(jsonHelper, Formatting.Indented));
             }

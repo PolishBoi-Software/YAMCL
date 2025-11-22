@@ -44,6 +44,8 @@
             // 
             // nameBox
             // 
+            this.nameBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.nameBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
             this.nameBox.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(37)))));
             this.nameBox.Content = "";
@@ -67,7 +69,7 @@
             this.nameBox.PlaceholderColor = System.Drawing.Color.Gray;
             this.nameBox.PlaceholderText = "Name";
             this.nameBox.Rounding = new System.Windows.Forms.Padding(8);
-            this.nameBox.Size = new System.Drawing.Size(509, 45);
+            this.nameBox.Size = new System.Drawing.Size(638, 45);
             this.nameBox.TabIndex = 1;
             this.nameBox.TextOffset = new System.Drawing.Size(0, 0);
             this.nameBox.UnderlinedStyle = true;
@@ -96,7 +98,7 @@
             this.versionList.OutlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.versionList.Rounding = new System.Windows.Forms.Padding(8);
             this.versionList.SelectedForegroundColor = System.Drawing.Color.White;
-            this.versionList.Size = new System.Drawing.Size(509, 374);
+            this.versionList.Size = new System.Drawing.Size(638, 374);
             this.versionList.TabIndex = 7;
             // 
             // nameLbl
@@ -109,7 +111,7 @@
             this.nameLbl.HorizontalAlignment = System.Drawing.StringAlignment.Center;
             this.nameLbl.Location = new System.Drawing.Point(159, 9);
             this.nameLbl.Name = "nameLbl";
-            this.nameLbl.Size = new System.Drawing.Size(210, 20);
+            this.nameLbl.Size = new System.Drawing.Size(339, 20);
             this.nameLbl.TabIndex = 9;
             this.nameLbl.VerticalAlignment = System.Drawing.StringAlignment.Near;
             // 
@@ -137,7 +139,7 @@
             this.okBtn.ImageAutoCenter = true;
             this.okBtn.ImageExpand = new System.Drawing.Point(0, 0);
             this.okBtn.ImageOffset = new System.Drawing.Point(0, 0);
-            this.okBtn.Location = new System.Drawing.Point(438, 746);
+            this.okBtn.Location = new System.Drawing.Point(567, 746);
             this.okBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.okBtn.Name = "okBtn";
             this.okBtn.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
@@ -227,7 +229,7 @@
             this.versionLbl.HorizontalAlignment = System.Drawing.StringAlignment.Center;
             this.versionLbl.Location = new System.Drawing.Point(159, 91);
             this.versionLbl.Name = "versionLbl";
-            this.versionLbl.Size = new System.Drawing.Size(210, 20);
+            this.versionLbl.Size = new System.Drawing.Size(339, 20);
             this.versionLbl.TabIndex = 12;
             this.versionLbl.VerticalAlignment = System.Drawing.StringAlignment.Near;
             // 
@@ -240,7 +242,7 @@
             this.modLoaderLbl.HorizontalAlignment = System.Drawing.StringAlignment.Center;
             this.modLoaderLbl.Location = new System.Drawing.Point(159, 503);
             this.modLoaderLbl.Name = "modLoaderLbl";
-            this.modLoaderLbl.Size = new System.Drawing.Size(210, 20);
+            this.modLoaderLbl.Size = new System.Drawing.Size(339, 20);
             this.modLoaderLbl.TabIndex = 13;
             this.modLoaderLbl.VerticalAlignment = System.Drawing.StringAlignment.Near;
             // 
@@ -275,7 +277,7 @@
             this.modLoaderList.OutlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.modLoaderList.Rounding = new System.Windows.Forms.Padding(8);
             this.modLoaderList.SelectedForegroundColor = System.Drawing.Color.White;
-            this.modLoaderList.Size = new System.Drawing.Size(509, 204);
+            this.modLoaderList.Size = new System.Drawing.Size(638, 204);
             this.modLoaderList.TabIndex = 14;
             // 
             // InstanceDialog
@@ -283,7 +285,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(37)))));
-            this.ClientSize = new System.Drawing.Size(534, 804);
+            this.ClientSize = new System.Drawing.Size(663, 804);
             this.Controls.Add(this.modLoaderList);
             this.Controls.Add(this.modLoaderLbl);
             this.Controls.Add(this.versionLbl);

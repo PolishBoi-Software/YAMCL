@@ -262,7 +262,10 @@ namespace YAMCL
         private void rmInstBtn_Click(object sender, EventArgs e)
         {
             if (instanceList.SelectedItem == null)
+            {
+                MessageBox.Show("Please select an instance!", "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
 
             var instance = InstanceManager.Instances[instanceList.SelectedIndex];
             var result = MessageBox.Show($"Are you sure you want to remove instance \"{instance.Name}\"?\n\nThis cannot be undone.", "YAMCL", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -360,6 +363,9 @@ namespace YAMCL
                 var proc = new ProcessWrapper(await launcher.InstallAndBuildProcessAsync(instance.Version, new MLaunchOption()
                 {
                     Session = AuthManager.Session,
+                    FullScreen = instance.LaunchOptions.FullScreen,
+                    ScreenWidth = instance.LaunchOptions.ScreenWidth,
+                    ScreenHeight = instance.LaunchOptions.ScreenHeight,
                     MaximumRamMb = 4096,
                     Path = new MinecraftPath(instance.DirectoryPath)
                 }));
@@ -507,19 +513,25 @@ namespace YAMCL
 
                 if (result == DialogResult.OK && !dial.Failed)
                 {
-                    var msgRes = MessageBox.Show("This WILL overwrite all data inside that instance, are you sure?\n\nMake sure to back up anything important!", "YAMCL", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    
-                    if (msgRes == DialogResult.Yes)
+                    var oldInst = instance;
+                    instance = dial.InstanceObject;
+                    InstanceManager.Instances[instanceList.SelectedIndex] = instance;
+                    string oldPath = oldInst.DirectoryPath;
+                    string newPath = instance.DirectoryPath;
+
+                    if (!oldPath.Equals(newPath, StringComparison.OrdinalIgnoreCase))
                     {
-                        var oldInst = instance;
-                        instance = dial.InstanceObject;
-                        InstanceManager.Instances[instanceList.SelectedIndex] = instance;
+                        if (Directory.Exists(newPath))
+                        {
+                            MessageBox.Show("Another instance is already using that name!", "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            InstanceManager.Instances[instanceList.SelectedIndex] = oldInst;
+                            return;
+                        }
 
-                        Directory.Delete(oldInst.DirectoryPath, true);
-
-                        instance.CreateDataFiles();
-                        RefreshInstances();
+                        Directory.Move(oldPath, newPath);
                     }
+                    instance.CreateDataFiles();
+                    RefreshInstances();
                 }
             }
         }
@@ -535,6 +547,32 @@ namespace YAMCL
             var instance = InstanceManager.Instances[instanceList.SelectedIndex];
 
             Process.Start("explorer.exe", instance.DirectoryPath);
+        }
+
+        private void launchOptsBtn_Click(object sender, EventArgs e)
+        {
+            if (instanceList.SelectedItem == null)
+            {
+                MessageBox.Show("Please select an instance!", "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var instance = InstanceManager.Instances[instanceList.SelectedIndex];
+
+            using (var dial = new LaunchOptionsDialog(instance))
+            {
+                var result = dial.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    instance.LaunchOptions = dial.Options;
+                    var msgResult = MessageBox.Show("Save launch options?", "YAMCL", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (msgResult == DialogResult.Yes)
+                    {
+                        instance.CreateDataFiles();
+                    }
+                }
+            }
         }
     }
 }

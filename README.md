@@ -12,7 +12,7 @@ A Minecraft launcher that tries to be good.
 
 # Features
 - Both MS login and offline login
-- Instances (Saved in user's AppData)
+- Instance management
 - Good looking UI (Thank you, [CuoreUI](https://github.com/owtysm2/CuoreUI)!)
 - Mod loader support
 - Discord Rich Presence
@@ -22,3 +22,6 @@ I was bored. I don't regret making this, though...!
 
 # Discord Server
 That's right! YAMCL has a Discord server now!<br>[Click here to join!](https://discord.gg/8KAtkftPDu)
+
+# Website
+How long until I stop trying to advertise YAMCL? Probably never, I wanna get people to use it but I don't wanna force them.<br>Anyway here is the website: https://polishboi-software.github.io/YAMCL (Must be exactly that!)

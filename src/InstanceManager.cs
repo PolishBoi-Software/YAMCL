@@ -1,4 +1,5 @@
-﻿using CuoreUI.Controls;
+﻿using CmlLib.Core.ProcessBuilder;
+using CuoreUI.Controls;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -38,11 +39,12 @@ namespace YAMCL
             }
         }
 
-        public static void AddInstance(string name, string baseVersion, string version, MinecraftInstance.ModLoader loader)
+        public static void AddInstance(string name, string baseVersion, string version, MinecraftInstance.ModLoader loader, MLaunchOption options)
         {
             string instancesDirPath = Path.Combine(Program.YAMCLFolder, "instances", name);
             var inst = new MinecraftInstance(name, version, loader, instancesDirPath);
             inst.BaseVersion = baseVersion;
+            inst.LaunchOptions = options;
             if (!Instances.Contains(inst)) Instances.Add(inst);
         }
 
@@ -61,7 +63,6 @@ namespace YAMCL
 
                 if (oldDataExists)
                 {
-                    Debug.WriteLine($"Migrating instance.dat to JSON...");
                     LoadOldInstances();
                     File.Move(oldInstanceDataFile, oldInstanceDataFileBackup);
                     Instances[i].CreateDataFiles();
@@ -70,7 +71,14 @@ namespace YAMCL
                 {
                     jsonHelper = JsonConvert.DeserializeObject<Dictionary<string, string>>(File.ReadAllText(instanceDataFile));
 
-                    AddInstance(jsonHelper["name"], jsonHelper["baseVersion"], jsonHelper["version"], GetModLoader(jsonHelper["loader"]));
+                    MLaunchOption options = new MLaunchOption()
+                    {
+                        FullScreen = bool.Parse(jsonHelper["fullscreen"]),
+                        ScreenWidth = int.Parse(jsonHelper["width"]),
+                        ScreenHeight = int.Parse(jsonHelper["height"])
+                    };
+
+                    AddInstance(jsonHelper["name"], jsonHelper["baseVersion"], jsonHelper["version"], GetModLoader(jsonHelper["loader"]), options);
                 }
 
                 i++;

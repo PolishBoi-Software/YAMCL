@@ -57,6 +57,7 @@
             this.addModBtn = new CuoreUI.Controls.cuiButton();
             this.openInstDirBtn = new CuoreUI.Controls.cuiButton();
             this.editInstBtn = new CuoreUI.Controls.cuiButton();
+            this.launchOptsBtn = new CuoreUI.Controls.cuiButton();
             ((System.ComponentModel.ISupportInitialize)(this.playerHead)).BeginInit();
             this.SuspendLayout();
             // 
@@ -746,12 +747,55 @@
             this.editInstBtn.TextOffset = new System.Drawing.Point(0, 0);
             this.editInstBtn.Click += new System.EventHandler(this.editInstBtn_Click);
             // 
+            // launchOptsBtn
+            // 
+            this.launchOptsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.launchOptsBtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.launchOptsBtn.CheckButton = false;
+            this.launchOptsBtn.Checked = false;
+            this.launchOptsBtn.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.launchOptsBtn.CheckedForeColor = System.Drawing.Color.White;
+            this.launchOptsBtn.CheckedImageTint = System.Drawing.Color.White;
+            this.launchOptsBtn.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.launchOptsBtn.Content = "Launch options";
+            this.launchOptsBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.launchOptsBtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.launchOptsBtn.Font = new System.Drawing.Font("Inter", 12F);
+            this.launchOptsBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.launchOptsBtn.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(44)))));
+            this.launchOptsBtn.HoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.launchOptsBtn.HoverImageTint = System.Drawing.Color.White;
+            this.launchOptsBtn.HoverOutline = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.launchOptsBtn.Image = null;
+            this.launchOptsBtn.ImageAutoCenter = true;
+            this.launchOptsBtn.ImageExpand = new System.Drawing.Point(0, 0);
+            this.launchOptsBtn.ImageOffset = new System.Drawing.Point(0, 0);
+            this.launchOptsBtn.Location = new System.Drawing.Point(1011, 189);
+            this.launchOptsBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.launchOptsBtn.Name = "launchOptsBtn";
+            this.launchOptsBtn.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.launchOptsBtn.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.launchOptsBtn.NormalImageTint = System.Drawing.Color.White;
+            this.launchOptsBtn.NormalOutline = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.launchOptsBtn.OutlineThickness = 1F;
+            this.launchOptsBtn.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.launchOptsBtn.PressedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.launchOptsBtn.PressedImageTint = System.Drawing.Color.White;
+            this.launchOptsBtn.PressedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.launchOptsBtn.Rounding = new System.Windows.Forms.Padding(8);
+            this.launchOptsBtn.Size = new System.Drawing.Size(178, 59);
+            this.launchOptsBtn.TabIndex = 23;
+            this.launchOptsBtn.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.launchOptsBtn.TextOffset = new System.Drawing.Point(0, 0);
+            this.launchOptsBtn.Click += new System.EventHandler(this.launchOptsBtn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(37)))));
             this.ClientSize = new System.Drawing.Size(1202, 712);
+            this.Controls.Add(this.launchOptsBtn);
             this.Controls.Add(this.editInstBtn);
             this.Controls.Add(this.openInstDirBtn);
             this.Controls.Add(this.addModBtn);
@@ -816,6 +860,7 @@
         private CuoreUI.Controls.cuiButton addModBtn;
         private CuoreUI.Controls.cuiButton openInstDirBtn;
         private CuoreUI.Controls.cuiButton editInstBtn;
+        private CuoreUI.Controls.cuiButton launchOptsBtn;
     }
 }
 

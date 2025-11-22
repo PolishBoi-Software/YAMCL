@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,7 +55,7 @@ namespace YAMCL
                 InstanceName = string.IsNullOrEmpty(nameBox.Content) ? $"Instance{InstanceManager.Instances.Count + 1}" : nameBox.Content;
                 InstanceVersion = GetSelectedVersion();
                 InstanceLoader = GetModLoader();
-                InstanceObject = new MinecraftInstance(InstanceName, InstanceVersion, InstanceLoader, Program.YAMCLFolder);
+                InstanceObject = new MinecraftInstance(InstanceName, InstanceVersion, InstanceLoader, Path.Combine(Program.YAMCLFolder, "instances", InstanceName));
                 InstanceObject.BaseVersion = InstanceVersion;
                 Failed = false;
                 Close();
