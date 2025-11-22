@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+}
+
+.icon {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 128px;
+    height: 128px;
+}
+
+.main {
+    background-color: #11111b;
+    border-radius: 8px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px;
+    border-style: double;
+    border-width: 5px;
+    border-color: #181825;
+}
+
+.app-name {
+    text-align: center;
+}
+
+.discord-server {
+    background-color: #454fbf;
+}
+
+.gh-repo {
+    background-color: #161b22;
+}
+
+.gh-repo-view {
+    border: white;
+    color: white;
+    background-color: #21262d;
+}
+
+.gh-repo-view:hover {
+    background-color: #30363d;
+}
+
+.discord-server-join {
+    border: white;
+    color: white;
+    background-color: #5865f2;
+}
+
+.discord-server-join:hover {
+    background-color: #4752c4;
+}
+
+.card {
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    margin: 10px;
+}
+
+.download {
+    border: white;
+    color: #1e1e2e;
+    background-color: #a6e3a1;
+}
+
+.changelog {
+    border: white;
+    color: #cdd6f4;
+    background-color: #313244;
+}
+
+button {
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.final {
+    background-color: #45475a;
+}
