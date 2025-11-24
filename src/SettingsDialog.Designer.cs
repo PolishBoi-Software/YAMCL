@@ -45,6 +45,8 @@
             this.discordRpcLblTooltip = new CuoreUI.Components.cuiTooltipHover(this.components);
             this.checkUpdateBtn = new CuoreUI.Controls.cuiButton();
             this.displayLogsLblTooltip = new CuoreUI.Components.cuiTooltipHover(this.components);
+            this.langLbl = new CuoreUI.Controls.cuiLabel();
+            this.langList = new CuoreUI.Controls.cuiListbox();
             this.SuspendLayout();
             // 
             // okBtn
@@ -113,21 +115,20 @@
             // 
             // autoSignInLbl
             // 
-            this.autoSignInLbl.Content = "Auto\\ Sign\\ In";
+            this.autoSignInLbl.Content = LanguageManager.GetTranslation("setting.autosignin.text");
             this.autoSignInLbl.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Bold);
             this.autoSignInLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.autoSignInLbl.HorizontalAlignment = System.Drawing.StringAlignment.Near;
             this.autoSignInLbl.Location = new System.Drawing.Point(66, 15);
             this.autoSignInLbl.Name = "autoSignInLbl";
-            this.autoSignInLbl.Size = new System.Drawing.Size(210, 20);
+            this.autoSignInLbl.Size = new System.Drawing.Size(230, 20);
             this.autoSignInLbl.TabIndex = 13;
             this.autoSignInLbl.VerticalAlignment = System.Drawing.StringAlignment.Near;
             // 
             // autoSignInLblTooltip
             // 
             this.autoSignInLblTooltip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(37)))));
-            this.autoSignInLblTooltip.Content = "Asks you if you want to sign in with a Microsoft account (or an offline one) on s" +
-    "tartup.";
+            this.autoSignInLblTooltip.Content = LanguageManager.GetTranslation("setting.autosignin.tooltip");
             this.autoSignInLblTooltip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.autoSignInLblTooltip.TargetControl = this.autoSignInLbl;
             this.autoSignInLblTooltip.TooltipPosition = CuoreUI.Components.cuiTooltipHover.Position.Top;
@@ -154,7 +155,7 @@
             this.cancelBtn.CheckedForeColor = System.Drawing.Color.White;
             this.cancelBtn.CheckedImageTint = System.Drawing.Color.White;
             this.cancelBtn.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cancelBtn.Content = "Cancel";
+            this.cancelBtn.Content = LanguageManager.GetTranslation("btn.cancel.text");
             this.cancelBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cancelBtn.DialogResult = System.Windows.Forms.DialogResult.None;
             this.cancelBtn.Font = new System.Drawing.Font("Inter", 12F);
@@ -197,13 +198,13 @@
             // 
             // autoUpdateLbl
             // 
-            this.autoUpdateLbl.Content = "Auto\\ Update";
+            this.autoUpdateLbl.Content = LanguageManager.GetTranslation("setting.autoupdate.text");
             this.autoUpdateLbl.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Bold);
             this.autoUpdateLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.autoUpdateLbl.HorizontalAlignment = System.Drawing.StringAlignment.Near;
             this.autoUpdateLbl.Location = new System.Drawing.Point(66, 54);
             this.autoUpdateLbl.Name = "autoUpdateLbl";
-            this.autoUpdateLbl.Size = new System.Drawing.Size(210, 20);
+            this.autoUpdateLbl.Size = new System.Drawing.Size(230, 20);
             this.autoUpdateLbl.TabIndex = 16;
             this.autoUpdateLbl.VerticalAlignment = System.Drawing.StringAlignment.Near;
             // 
@@ -231,7 +232,7 @@
             // autoUpdateLblTooltip
             // 
             this.autoUpdateLblTooltip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(37)))));
-            this.autoUpdateLblTooltip.Content = "Automatically checks for updates on startup.";
+            this.autoUpdateLblTooltip.Content = LanguageManager.GetTranslation("setting.autoupdate.tooltip");
             this.autoUpdateLblTooltip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.autoUpdateLblTooltip.TargetControl = this.autoUpdateLbl;
             this.autoUpdateLblTooltip.TooltipPosition = CuoreUI.Components.cuiTooltipHover.Position.Top;
@@ -239,13 +240,13 @@
             // 
             // discordRpcLbl
             // 
-            this.discordRpcLbl.Content = "Discord\\ RPC";
+            this.discordRpcLbl.Content = LanguageManager.GetTranslation("setting.discordrpc.text");
             this.discordRpcLbl.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Bold);
             this.discordRpcLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.discordRpcLbl.HorizontalAlignment = System.Drawing.StringAlignment.Near;
             this.discordRpcLbl.Location = new System.Drawing.Point(66, 95);
             this.discordRpcLbl.Name = "discordRpcLbl";
-            this.discordRpcLbl.Size = new System.Drawing.Size(210, 20);
+            this.discordRpcLbl.Size = new System.Drawing.Size(230, 20);
             this.discordRpcLbl.TabIndex = 18;
             this.discordRpcLbl.VerticalAlignment = System.Drawing.StringAlignment.Near;
             // 
@@ -273,7 +274,7 @@
             // discordRpcLblTooltip
             // 
             this.discordRpcLblTooltip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(37)))));
-            this.discordRpcLblTooltip.Content = "Displays YAMCL in your Discord rich presence.";
+            this.discordRpcLblTooltip.Content = LanguageManager.GetTranslation("setting.discordrpc.tooltip");
             this.discordRpcLblTooltip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.discordRpcLblTooltip.TargetControl = this.discordRpcLbl;
             this.discordRpcLblTooltip.TooltipPosition = CuoreUI.Components.cuiTooltipHover.Position.Top;
@@ -290,7 +291,7 @@
             this.checkUpdateBtn.CheckedForeColor = System.Drawing.Color.White;
             this.checkUpdateBtn.CheckedImageTint = System.Drawing.Color.White;
             this.checkUpdateBtn.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.checkUpdateBtn.Content = "Check for updates";
+            this.checkUpdateBtn.Content = LanguageManager.GetTranslation("btn.checkforupdates.text");
             this.checkUpdateBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.checkUpdateBtn.DialogResult = System.Windows.Forms.DialogResult.None;
             this.checkUpdateBtn.Font = new System.Drawing.Font("Inter", 12F);
@@ -322,14 +323,47 @@
             this.checkUpdateBtn.TextOffset = new System.Drawing.Point(0, 0);
             this.checkUpdateBtn.Click += new System.EventHandler(this.checkUpdateBtn_Click);
             // 
-            // displayLogsLblTooltip
+            // langLbl
             // 
-            this.displayLogsLblTooltip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(37)))));
-            this.displayLogsLblTooltip.Content = "Logs what Minecraft is doing.";
-            this.displayLogsLblTooltip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
-            this.displayLogsLblTooltip.TargetControl = null;
-            this.displayLogsLblTooltip.TooltipPosition = CuoreUI.Components.cuiTooltipHover.Position.Top;
-            this.displayLogsLblTooltip.TooltipPositionOffset = new System.Drawing.Size(0, 0);
+            this.langLbl.Content = LanguageManager.GetTranslation("setting.language.text");
+            this.langLbl.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Bold);
+            this.langLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.langLbl.HorizontalAlignment = System.Drawing.StringAlignment.Near;
+            this.langLbl.Location = new System.Drawing.Point(13, 124);
+            this.langLbl.Name = "langLbl";
+            this.langLbl.Size = new System.Drawing.Size(230, 20);
+            this.langLbl.TabIndex = 21;
+            this.langLbl.VerticalAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // langList
+            // 
+            this.langList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.langList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.langList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.langList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.langList.DisplayMember = "Name";
+            this.langList.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.langList.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
+            this.langList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.langList.ForegroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.langList.FormattingEnabled = true;
+            this.langList.ItemBackgroundColor = System.Drawing.Color.Empty;
+            this.langList.ItemHeight = 34;
+            this.langList.ItemHoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(44)))));
+            this.langList.ItemHoverForegroundColor = System.Drawing.Color.DimGray;
+            this.langList.ItemRounding = 8;
+            this.langList.Items.AddRange(new object[] {
+            "English",
+            "Polish"});
+            this.langList.ItemSelectedBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(71)))), ((int)(((byte)(90)))));
+            this.langList.Location = new System.Drawing.Point(13, 150);
+            this.langList.Name = "langList";
+            this.langList.OutlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.langList.Rounding = new System.Windows.Forms.Padding(8);
+            this.langList.SelectedForegroundColor = System.Drawing.Color.White;
+            this.langList.Size = new System.Drawing.Size(428, 170);
+            this.langList.TabIndex = 22;
             // 
             // SettingsDialog
             // 
@@ -337,6 +371,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(37)))));
             this.ClientSize = new System.Drawing.Size(737, 398);
+            this.Controls.Add(this.langList);
+            this.Controls.Add(this.langLbl);
             this.Controls.Add(this.checkUpdateBtn);
             this.Controls.Add(this.discordRpcLbl);
             this.Controls.Add(this.discordRpcCheck);
@@ -355,9 +391,8 @@
             this.Name = "SettingsDialog";
             this.Opacity = 0D;
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Settings";
+            this.Text = LanguageManager.GetTranslation("dialog.settings.title");
             this.ResumeLayout(false);
 
         }
@@ -380,5 +415,7 @@
         private CuoreUI.Components.cuiTooltipHover discordRpcLblTooltip;
         private CuoreUI.Controls.cuiButton checkUpdateBtn;
         private CuoreUI.Components.cuiTooltipHover displayLogsLblTooltip;
+        private CuoreUI.Controls.cuiLabel langLbl;
+        private CuoreUI.Controls.cuiListbox langList;
     }
 }

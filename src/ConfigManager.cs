@@ -26,7 +26,8 @@ namespace YAMCL
             {
                 { "autoSignIn", true },
                 { "autoUpdate", true },
-                { "discordRpc", true }
+                { "discordRpc", true },
+                { "language", Language.English.ToString() }
             };
 
             foreach (var key in defaultConfig.Keys)

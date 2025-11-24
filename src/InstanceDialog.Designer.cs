@@ -105,7 +105,7 @@
             // 
             this.nameLbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.nameLbl.Content = "Instance\\ name:";
+            this.nameLbl.Content = LanguageManager.GetTranslation("dialog.instance.name");
             this.nameLbl.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.nameLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.nameLbl.HorizontalAlignment = System.Drawing.StringAlignment.Center;
@@ -169,7 +169,7 @@
             this.cancelBtn.CheckedForeColor = System.Drawing.Color.White;
             this.cancelBtn.CheckedImageTint = System.Drawing.Color.White;
             this.cancelBtn.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cancelBtn.Content = "Cancel";
+            this.cancelBtn.Content = LanguageManager.GetTranslation("btn.cancel.text");
             this.cancelBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cancelBtn.DialogResult = System.Windows.Forms.DialogResult.None;
             this.cancelBtn.Font = new System.Drawing.Font("Inter", 12F);
@@ -223,7 +223,7 @@
             // versionLbl
             // 
             this.versionLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.versionLbl.Content = "Instance\\ version:";
+            this.versionLbl.Content = LanguageManager.GetTranslation("dialog.instance.version");
             this.versionLbl.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.versionLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.versionLbl.HorizontalAlignment = System.Drawing.StringAlignment.Center;
@@ -236,7 +236,7 @@
             // modLoaderLbl
             // 
             this.modLoaderLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.modLoaderLbl.Content = "Mod\\ loader:";
+            this.modLoaderLbl.Content = LanguageManager.GetTranslation("dialog.instance.loader");
             this.modLoaderLbl.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.modLoaderLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.modLoaderLbl.HorizontalAlignment = System.Drawing.StringAlignment.Center;
@@ -255,7 +255,7 @@
             this.modLoaderList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.modLoaderList.DisplayMember = "Name";
             this.modLoaderList.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.modLoaderList.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
+            this.modLoaderList.Font = new System.Drawing.Font("Inter", 9F);
             this.modLoaderList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.modLoaderList.ForegroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.modLoaderList.FormattingEnabled = true;
@@ -301,10 +301,10 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "InstanceDialog";
+            this.Opacity = 0D;
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Create or edit an instance";
+            this.Text = LanguageManager.GetTranslation("dialog.instance.title");
             this.Load += new System.EventHandler(this.InstanceDialog_Load);
             this.ResumeLayout(false);
 

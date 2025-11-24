@@ -106,6 +106,7 @@
       <DependentUpon>InstanceDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="InstanceManager.cs" />
+    <Compile Include="LanguageManager.cs" />
     <Compile Include="LaunchOptionsDialog.cs">
       <SubType>Form</SubType>
     </Compile>

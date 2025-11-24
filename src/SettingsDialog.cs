@@ -19,6 +19,7 @@ namespace YAMCL
             autoSignInCheck.Checked = (bool)ConfigManager.Config["autoSignIn"];
             autoUpdateCheck.Checked = (bool)ConfigManager.Config["autoUpdate"];
             discordRpcCheck.Checked = (bool)ConfigManager.Config["discordRpc"];
+            langList.SelectedItem = LanguageManager.GetLanguage().ToString();
         }
 
         private void okBtn_Click(object sender, EventArgs e)
@@ -27,6 +28,7 @@ namespace YAMCL
             ConfigManager.Config["autoSignIn"] = autoSignInCheck.Checked;
             ConfigManager.Config["autoUpdate"] = autoUpdateCheck.Checked;
             ConfigManager.Config["discordRpc"] = discordRpcCheck.Checked;
+            ConfigManager.Config["language"] = langList.SelectedItem.ToString();
             Close();
         }
 

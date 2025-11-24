@@ -71,7 +71,7 @@
             this.unameBox.Padding = new System.Windows.Forms.Padding(17, 14, 17, 0);
             this.unameBox.PasswordChar = false;
             this.unameBox.PlaceholderColor = System.Drawing.Color.Gray;
-            this.unameBox.PlaceholderText = "Username";
+            this.unameBox.PlaceholderText = "";
             this.unameBox.Rounding = new System.Windows.Forms.Padding(8);
             this.unameBox.Size = new System.Drawing.Size(418, 45);
             this.unameBox.TabIndex = 2;
@@ -80,7 +80,7 @@
             // 
             // unameLbl
             // 
-            this.unameLbl.Content = "Username:";
+            this.unameLbl.Content = LanguageManager.GetTranslation("dialog.auth.username");
             this.unameLbl.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.unameLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.unameLbl.HorizontalAlignment = System.Drawing.StringAlignment.Near;
@@ -101,7 +101,7 @@
             this.signInBtn.CheckedForeColor = System.Drawing.Color.White;
             this.signInBtn.CheckedImageTint = System.Drawing.Color.White;
             this.signInBtn.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.signInBtn.Content = "Sign in";
+            this.signInBtn.Content = LanguageManager.GetTranslation("btn.signin.text");
             this.signInBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.signInBtn.DialogResult = System.Windows.Forms.DialogResult.None;
             this.signInBtn.Font = new System.Drawing.Font("Inter", 12F);
@@ -145,7 +145,7 @@
             this.Font = new System.Drawing.Font("Inter", 9F);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AuthDialog";

@@ -17,8 +17,8 @@ namespace YAMCL
         public UpdateDialog(Version installed, string latest, string changelogUrl)
         {
             InitializeComponent();
-            installedVersion.Content = $"Installed version: {installed}";
-            latestLbl.Content = $"Latest version: {latest}";
+            installedVersion.Content = LanguageManager.GetTranslation("dialog.update.installedver").Replace("[VERSION]", installed.ToString());
+            latestLbl.Content = LanguageManager.GetTranslation("dialog.update.latestver").Replace("[VERSION]", installed.ToString());
             _changelogUrl = changelogUrl;
         }
 

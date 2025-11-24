@@ -65,7 +65,7 @@ namespace YAMCL
             this.widthBox.Padding = new System.Windows.Forms.Padding(17, 14, 17, 0);
             this.widthBox.PasswordChar = false;
             this.widthBox.PlaceholderColor = System.Drawing.Color.Gray;
-            this.widthBox.PlaceholderText = "Window Width";
+            this.widthBox.PlaceholderText = "";
             this.widthBox.Rounding = new System.Windows.Forms.Padding(8);
             this.widthBox.Size = new System.Drawing.Size(621, 45);
             this.widthBox.TabIndex = 2;
@@ -74,7 +74,7 @@ namespace YAMCL
             // 
             // widthLbl
             // 
-            this.widthLbl.Content = "Window\\ width:";
+            this.widthLbl.Content = LanguageManager.GetTranslation("dialog.launchopts.width");
             this.widthLbl.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.widthLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.widthLbl.HorizontalAlignment = System.Drawing.StringAlignment.Near;
@@ -86,7 +86,7 @@ namespace YAMCL
             // 
             // heightLbl
             // 
-            this.heightLbl.Content = "Window\\ height:";
+            this.heightLbl.Content = LanguageManager.GetTranslation("dialog.launchopts.height");
             this.heightLbl.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.heightLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.heightLbl.HorizontalAlignment = System.Drawing.StringAlignment.Near;
@@ -121,7 +121,7 @@ namespace YAMCL
             this.heightBox.Padding = new System.Windows.Forms.Padding(17, 14, 17, 0);
             this.heightBox.PasswordChar = false;
             this.heightBox.PlaceholderColor = System.Drawing.Color.Gray;
-            this.heightBox.PlaceholderText = "Window Height";
+            this.heightBox.PlaceholderText = "";
             this.heightBox.Rounding = new System.Windows.Forms.Padding(8);
             this.heightBox.Size = new System.Drawing.Size(621, 45);
             this.heightBox.TabIndex = 11;
@@ -182,7 +182,7 @@ namespace YAMCL
             this.cancelBtn.CheckedForeColor = System.Drawing.Color.White;
             this.cancelBtn.CheckedImageTint = System.Drawing.Color.White;
             this.cancelBtn.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cancelBtn.Content = "Cancel";
+            this.cancelBtn.Content = LanguageManager.GetTranslation("btn.cancel.text");
             this.cancelBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cancelBtn.DialogResult = System.Windows.Forms.DialogResult.None;
             this.cancelBtn.Font = new System.Drawing.Font("Inter", 12F);
@@ -216,7 +216,7 @@ namespace YAMCL
             // 
             // fullScreenLbl
             // 
-            this.fullScreenLbl.Content = "Fullscreen";
+            this.fullScreenLbl.Content = LanguageManager.GetTranslation("dialog.launchopts.fullscreen");
             this.fullScreenLbl.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Bold);
             this.fullScreenLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.fullScreenLbl.HorizontalAlignment = System.Drawing.StringAlignment.Near;
@@ -263,9 +263,12 @@ namespace YAMCL
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "LaunchOptionsDialog";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Launch Options";
+            this.Text = LanguageManager.GetTranslation("dialog.launchopts.title");
             this.ResumeLayout(false);
 
         }

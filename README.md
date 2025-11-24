@@ -15,6 +15,7 @@ A Minecraft launcher that tries to be good.
 - Instance management
 - Good looking UI (Thank you, [CuoreUI](https://github.com/owtysm2/CuoreUI)!)
 - Mod loader support
+- Language support (Currently supports English and Polish)
 - Discord Rich Presence
 
 # Why?

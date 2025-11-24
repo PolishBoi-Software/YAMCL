@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            LanguageManager.Init();
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.roundedCorners = new CuoreUI.Components.cuiFormRounder();
@@ -78,7 +79,7 @@
             this.signInBtn.CheckedForeColor = System.Drawing.Color.White;
             this.signInBtn.CheckedImageTint = System.Drawing.Color.White;
             this.signInBtn.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.signInBtn.Content = "Sign in";
+            this.signInBtn.Content = LanguageManager.GetTranslation("btn.signin.text");
             this.signInBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.signInBtn.DialogResult = System.Windows.Forms.DialogResult.None;
             this.signInBtn.Font = new System.Drawing.Font("Inter", 12F);
@@ -153,7 +154,7 @@
             this.launchBtn.CheckedForeColor = System.Drawing.Color.White;
             this.launchBtn.CheckedImageTint = System.Drawing.Color.White;
             this.launchBtn.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.launchBtn.Content = "Launch";
+            this.launchBtn.Content = LanguageManager.GetTranslation("btn.launch.text");
             this.launchBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.launchBtn.DialogResult = System.Windows.Forms.DialogResult.None;
             this.launchBtn.Font = new System.Drawing.Font("Inter", 12F);
@@ -240,7 +241,7 @@
             this.createInstBtn.CheckedForeColor = System.Drawing.Color.White;
             this.createInstBtn.CheckedImageTint = System.Drawing.Color.White;
             this.createInstBtn.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.createInstBtn.Content = "Create instance";
+            this.createInstBtn.Content = LanguageManager.GetTranslation("btn.createinst.text");
             this.createInstBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.createInstBtn.DialogResult = System.Windows.Forms.DialogResult.None;
             this.createInstBtn.Font = new System.Drawing.Font("Inter", 12F);
@@ -443,7 +444,7 @@
             this.rmInstBtn.CheckedForeColor = System.Drawing.Color.White;
             this.rmInstBtn.CheckedImageTint = System.Drawing.Color.White;
             this.rmInstBtn.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.rmInstBtn.Content = "Remove instance";
+            this.rmInstBtn.Content = LanguageManager.GetTranslation("btn.rminst.text");
             this.rmInstBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rmInstBtn.DialogResult = System.Windows.Forms.DialogResult.None;
             this.rmInstBtn.Font = new System.Drawing.Font("Inter", 12F);
@@ -508,7 +509,7 @@
             // 
             this.downloadProgressLbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.downloadProgressLbl.Content = "0\\ bytes\\ /\\ 0\\ bytes";
+            this.downloadProgressLbl.Content = "0\\ B\\ /\\ 0\\ B";
             this.downloadProgressLbl.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Bold);
             this.downloadProgressLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.downloadProgressLbl.HorizontalAlignment = System.Drawing.StringAlignment.Near;
@@ -545,7 +546,7 @@
             this.settingsBtn.CheckedForeColor = System.Drawing.Color.White;
             this.settingsBtn.CheckedImageTint = System.Drawing.Color.White;
             this.settingsBtn.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.settingsBtn.Content = "Settings";
+            this.settingsBtn.Content = LanguageManager.GetTranslation("btn.settings.text");
             this.settingsBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.settingsBtn.DialogResult = System.Windows.Forms.DialogResult.None;
             this.settingsBtn.Font = new System.Drawing.Font("Inter", 12F);
@@ -587,7 +588,7 @@
             this.killBtn.CheckedForeColor = System.Drawing.Color.White;
             this.killBtn.CheckedImageTint = System.Drawing.Color.White;
             this.killBtn.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.killBtn.Content = "Kill";
+            this.killBtn.Content = LanguageManager.GetTranslation("btn.kill.text");
             this.killBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.killBtn.DialogResult = System.Windows.Forms.DialogResult.None;
             this.killBtn.Font = new System.Drawing.Font("Inter", 12F);
@@ -630,7 +631,7 @@
             this.addModBtn.CheckedForeColor = System.Drawing.Color.White;
             this.addModBtn.CheckedImageTint = System.Drawing.Color.White;
             this.addModBtn.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.addModBtn.Content = "Add a mod";
+            this.addModBtn.Content = LanguageManager.GetTranslation("btn.addmod.text");
             this.addModBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addModBtn.DialogResult = System.Windows.Forms.DialogResult.None;
             this.addModBtn.Font = new System.Drawing.Font("Inter", 12F);
@@ -672,7 +673,7 @@
             this.openInstDirBtn.CheckedForeColor = System.Drawing.Color.White;
             this.openInstDirBtn.CheckedImageTint = System.Drawing.Color.White;
             this.openInstDirBtn.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.openInstDirBtn.Content = "Open folder";
+            this.openInstDirBtn.Content = LanguageManager.GetTranslation("btn.openinstancefolder.text");
             this.openInstDirBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.openInstDirBtn.DialogResult = System.Windows.Forms.DialogResult.None;
             this.openInstDirBtn.Font = new System.Drawing.Font("Inter", 12F);
@@ -715,7 +716,7 @@
             this.editInstBtn.CheckedForeColor = System.Drawing.Color.White;
             this.editInstBtn.CheckedImageTint = System.Drawing.Color.White;
             this.editInstBtn.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.editInstBtn.Content = "Edit instance";
+            this.editInstBtn.Content = LanguageManager.GetTranslation("btn.editinst.text");
             this.editInstBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.editInstBtn.DialogResult = System.Windows.Forms.DialogResult.None;
             this.editInstBtn.Font = new System.Drawing.Font("Inter", 12F);
@@ -757,7 +758,7 @@
             this.launchOptsBtn.CheckedForeColor = System.Drawing.Color.White;
             this.launchOptsBtn.CheckedImageTint = System.Drawing.Color.White;
             this.launchOptsBtn.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.launchOptsBtn.Content = "Launch options";
+            this.launchOptsBtn.Content = LanguageManager.GetTranslation("btn.launchopts.text");
             this.launchOptsBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.launchOptsBtn.DialogResult = System.Windows.Forms.DialogResult.None;
             this.launchOptsBtn.Font = new System.Drawing.Font("Inter", 12F);

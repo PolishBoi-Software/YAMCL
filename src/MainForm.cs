@@ -50,16 +50,16 @@ namespace YAMCL
 
         private void AuthManager_OnSignOut(object sender, EventArgs e)
         {
-            signInBtn.Content = "Sign in";
+            signInBtn.Content = LanguageManager.GetTranslation("btn.signin.text");
             playerHead.Image = null;
             unameLbl.Content = "USERNAME";
             uuidLbl.Content = "UUID";
-            MessageBox.Show("Successfully signed out!", "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(LanguageManager.GetTranslation("message.success.signout"), "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void AuthManager_OnSignIn(object sender, MSession e)
         {
-            signInBtn.Content = "Sign out";
+            signInBtn.Content = LanguageManager.GetTranslation("btn.signout.text");
             string url = $"https://nmsr.nickac.dev/bust/{e.UUID}";
             playerHead.ImageLocation = url;
             string nonMsLabel = !AuthManager.IsMicrosoft ? " [OFFLINE]" : string.Empty;
@@ -67,7 +67,7 @@ namespace YAMCL
             uuidLbl.Content = e.UUID;
 
             if (AuthManager.IsMicrosoft)
-                MessageBox.Show($"Successfully signed in as {e.Username}!", "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(LanguageManager.GetTranslation("message.success.signin").Replace("[USERNAME]", e.Username), "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private async void signInBtn_Click(object sender, EventArgs e)
@@ -76,7 +76,7 @@ namespace YAMCL
             {
                 if (AuthManager.Session != null)
                 {
-                    var result = MessageBox.Show("Are you sure you want to sign out?", "YAMCL", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    var result = MessageBox.Show(LanguageManager.GetTranslation("message.question.signout"), "YAMCL", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     
                     if (result == DialogResult.Yes)
                         await AuthManager.SignOut();
@@ -84,7 +84,7 @@ namespace YAMCL
                     return;
                 }
 
-                var msgResult = MessageBox.Show("Sign in using a Microsoft account?", "YAMCL", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                var msgResult = MessageBox.Show(LanguageManager.GetTranslation("message.question.signin_ms"), "YAMCL", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (msgResult == DialogResult.Yes)
                 {
                     await AuthManager.LogInWithMicrosoft();
@@ -97,7 +97,7 @@ namespace YAMCL
 
                         if (dialResult == DialogResult.OK)
                         {
-                            AuthManager.LogInOffline(dial.Username, MessageBox.Show("Use legacy session?", "YAMCL", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes);
+                            AuthManager.LogInOffline(dial.Username, MessageBox.Show(LanguageManager.GetTranslation("message.question.legacy"), "YAMCL", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes);
                         }
                     }
                 }
@@ -143,12 +143,12 @@ namespace YAMCL
                                 web.DownloadFileCompleted += (_s, _e) =>
                                 {
                                     UpdateDownloadFinished = true;
-                                    taskLbl.Content = "Finished!";
+                                    taskLbl.Content = LanguageManager.GetTranslation("status.success.finish");
                                 };
 
                                 UpdateFileName = path;
 
-                                taskLbl.Content = "Downloading update";
+                                taskLbl.Content = LanguageManager.GetTranslation("status.downloading.update");
                                 web.DownloadFileAsync(new Uri(ev.DownloadURL), path);
                             }                            
                         }
@@ -158,7 +158,7 @@ namespace YAMCL
                 {
                     if (checkForUpdateBtnClicked)
                     {
-                        MessageBox.Show("You have the latest version of YAMCL!", "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(LanguageManager.GetTranslation("message.information.latest_ver"), "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         checkForUpdateBtnClicked = false;
                     }
                 }
@@ -174,7 +174,7 @@ namespace YAMCL
 
             if ((bool)ConfigManager.Config["autoSignIn"])
             {
-                var msgResult = MessageBox.Show("Sign in using a Microsoft account?", "YAMCL", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var msgResult = MessageBox.Show(LanguageManager.GetTranslation("message.question.signin_ms"), "YAMCL", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (msgResult == DialogResult.Yes)
                 {
                     await AuthManager.LogInWithMicrosoft();
@@ -187,7 +187,7 @@ namespace YAMCL
 
                         if (dialResult == DialogResult.OK)
                         {
-                            AuthManager.LogInOffline(dial.Username, MessageBox.Show("Use legacy session?", "YAMCL", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes);
+                            AuthManager.LogInOffline(dial.Username, MessageBox.Show(LanguageManager.GetTranslation("message.question.legacy"), "YAMCL", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes);
                         }
                     }
                 }
@@ -263,12 +263,12 @@ namespace YAMCL
         {
             if (instanceList.SelectedItem == null)
             {
-                MessageBox.Show("Please select an instance!", "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(LanguageManager.GetTranslation("message.error.selectinstance"), "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             var instance = InstanceManager.Instances[instanceList.SelectedIndex];
-            var result = MessageBox.Show($"Are you sure you want to remove instance \"{instance.Name}\"?\n\nThis cannot be undone.", "YAMCL", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var result = MessageBox.Show(LanguageManager.GetTranslation("message.question.rminst").Replace("[INSTANCE]", instance.Name), "YAMCL", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 instance.Remove();
@@ -276,7 +276,7 @@ namespace YAMCL
                 InstanceManager.Instances.Remove(instance);
                 RefreshInstances();
 
-                MessageBox.Show($"Successfully removed instance \"{instance.Name}\"!", "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(LanguageManager.GetTranslation("message.success.rminst").Replace("[INSTANCE]", instance.Name), "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -316,18 +316,18 @@ namespace YAMCL
             {
                 if (instanceList.SelectedItem == null)
                 {
-                    MessageBox.Show("Please select an instance!", "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(LanguageManager.GetTranslation("message.error.selectinstance"), "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 if (AuthManager.Session == null)
                 {
-                    MessageBox.Show("Please sign in!", "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(LanguageManager.GetTranslation("message.error.signin"), "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 launchBtn.Enabled = false;
-                launchBtn.Content = "Launching...";
+                launchBtn.Content = LanguageManager.GetTranslation("btn.launch.launching_text");
 
                 progBar.Value = 0;
                 taskbarState.ProgressValue = 0;
@@ -355,7 +355,7 @@ namespace YAMCL
 
                 if (instance.Loader != MinecraftInstance.ModLoader.None && (instance.Version == instance.BaseVersion))
                 {
-                    taskLbl.Content = $"Installing {instance.Loader}";
+                    taskLbl.Content = LanguageManager.GetTranslation($"status.installing.{instance.Loader.ToString().ToLower()}");
                     instance.Version = await InstallLoader(instance.BaseVersion, launcher, instance.Loader);
                     instance.CreateDataFiles();
                 }
@@ -370,6 +370,11 @@ namespace YAMCL
                     Path = new MinecraftPath(instance.DirectoryPath)
                 }));
 
+                proc.Exited += (s, ev) =>
+                {
+                    processes.Remove(proc);
+                };
+
                 processes.Add(proc);
 
                 proc.StartWithEvents();
@@ -382,10 +387,10 @@ namespace YAMCL
             taskbarState.ProgressValue = 0;
             taskbarState.State = CuoreUI.Components.cuiTaskbarStateController.TaskbarStates.Default;
             launchBtn.Enabled = true;
-            launchBtn.Content = "Launch";
+            launchBtn.Content = LanguageManager.GetTranslation("btn.launch.text");
             taskLbl.Content = "Finished";
             progBar.Value = 0;
-            downloadProgressLbl.Content = "0 bytes / 0 bytes";
+            downloadProgressLbl.Content = "0 B / 0 B";
         }
 
         private void settingsBtn_Click(object sender, EventArgs e)
@@ -397,7 +402,13 @@ namespace YAMCL
                 if (result == DialogResult.OK)
                 {
                     ConfigManager.SaveConfig();
-                    taskLbl.Content = "Saved config!";
+                    var oldLang = LanguageManager.CurrentLanguage;
+                    LanguageManager.Init();
+
+                    if (LanguageManager.CurrentLanguage != oldLang)
+                        MessageBox.Show(LanguageManager.GetTranslation("message.info.langrestart"), "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    taskLbl.Content = LanguageManager.GetTranslation("status.message.config_saved");
                 }
             }
         }
@@ -420,11 +431,11 @@ namespace YAMCL
         {
             if (processes.Count == 0)
             {
-                MessageBox.Show("Minecraft is not running!", "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(LanguageManager.GetTranslation("message.error.mc_not_running"), "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            var result = MessageBox.Show("Are you sure you want to kill Minecraft?\n\nThis may cause your instance to get corrupted, and should be used when Minecraft crashes.", "YAMCL", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var result = MessageBox.Show(LanguageManager.GetTranslation("message.question.killmc"), "YAMCL", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
@@ -458,7 +469,7 @@ namespace YAMCL
         {
             if (instanceList.SelectedItem == null)
             {
-                MessageBox.Show("Please select an instance!", "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(LanguageManager.GetTranslation("message.error.selectinstance"), "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -501,7 +512,7 @@ namespace YAMCL
         {
             if (instanceList.SelectedItem == null)
             {
-                MessageBox.Show("Please select an instance!", "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(LanguageManager.GetTranslation("message.error.selectinstance"), "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -540,7 +551,7 @@ namespace YAMCL
         {
             if (instanceList.SelectedItem == null)
             {
-                MessageBox.Show("Please select an instance!", "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(LanguageManager.GetTranslation("message.error.selectinstance"), "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -553,7 +564,7 @@ namespace YAMCL
         {
             if (instanceList.SelectedItem == null)
             {
-                MessageBox.Show("Please select an instance!", "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(LanguageManager.GetTranslation("message.error.selectinstance"), "YAMCL", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

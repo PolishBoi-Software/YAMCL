@@ -52,7 +52,7 @@ namespace YAMCL
             try
             {
                 DialogResult = DialogResult.OK;
-                InstanceName = string.IsNullOrEmpty(nameBox.Content) ? $"Instance{InstanceManager.Instances.Count + 1}" : nameBox.Content;
+                InstanceName = string.IsNullOrEmpty(nameBox.Content) ? $"Instance{InstanceManager.Instances.Where(i => i.Name.StartsWith("Instance")).Count() + 1}" : nameBox.Content;
                 InstanceVersion = GetSelectedVersion();
                 InstanceLoader = GetModLoader();
                 InstanceObject = new MinecraftInstance(InstanceName, InstanceVersion, InstanceLoader, Path.Combine(Program.YAMCLFolder, "instances", InstanceName));

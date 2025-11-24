@@ -62,7 +62,7 @@
             // 
             // newUpdateLbl
             // 
-            this.newUpdateLbl.Content = "A\\ new\\ version\\ is\\ available!";
+            this.newUpdateLbl.Content = LanguageManager.GetTranslation("dialog.update.newupdate");
             this.newUpdateLbl.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.newUpdateLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.newUpdateLbl.HorizontalAlignment = System.Drawing.StringAlignment.Near;
@@ -74,7 +74,7 @@
             // 
             // installedVersion
             // 
-            this.installedVersion.Content = "Installed\\ version:\\ INSTALLED";
+            this.installedVersion.Content = "Current\\ version:\\ INSTALLED";
             this.installedVersion.Font = new System.Drawing.Font("Inter Medium", 12F);
             this.installedVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.installedVersion.HorizontalAlignment = System.Drawing.StringAlignment.Near;
@@ -98,7 +98,7 @@
             // 
             // questionLbl
             // 
-            this.questionLbl.Content = "Would\\ you\\ like\\ to\\ update\\?";
+            this.questionLbl.Content = LanguageManager.GetTranslation("dialog.update.question");
             this.questionLbl.Font = new System.Drawing.Font("Inter", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.questionLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.questionLbl.HorizontalAlignment = System.Drawing.StringAlignment.Center;
@@ -119,7 +119,7 @@
             this.yesBtn.CheckedForeColor = System.Drawing.Color.White;
             this.yesBtn.CheckedImageTint = System.Drawing.Color.White;
             this.yesBtn.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.yesBtn.Content = "Yes";
+            this.yesBtn.Content = LanguageManager.GetTranslation("btn.yes.text");
             this.yesBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.yesBtn.DialogResult = System.Windows.Forms.DialogResult.None;
             this.yesBtn.Font = new System.Drawing.Font("Inter", 12F);
@@ -162,7 +162,7 @@
             this.noBtn.CheckedForeColor = System.Drawing.Color.White;
             this.noBtn.CheckedImageTint = System.Drawing.Color.White;
             this.noBtn.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.noBtn.Content = "No";
+            this.noBtn.Content = LanguageManager.GetTranslation("btn.no.text");
             this.noBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.noBtn.DialogResult = System.Windows.Forms.DialogResult.None;
             this.noBtn.Font = new System.Drawing.Font("Inter", 12F);
@@ -256,9 +256,8 @@
             this.Name = "UpdateDialog";
             this.Opacity = 0D;
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "A new version of YAMCL is available!";
+            this.Text = LanguageManager.GetTranslation("dialog.update.newupdate");
             this.ResumeLayout(false);
 
         }
