@@ -79,7 +79,10 @@ namespace YAMCL
                     ["dialog.update.newupdate"] = "A new version of YAMCL is available!",
                     ["dialog.update.question"] = "Would you like to update?",
                     ["dialog.settings.title"] = "Settings",
-                    ["message.info.langrestart"] = "Please restart YAMCL to fully apply the language setting."
+                    ["message.info.langrestart"] = "Please restart YAMCL to fully apply the language setting.",
+                    ["btn.close.tooltip"] = "Closes the app.",
+                    ["btn.minimize.tooltip"] = "Minimizes the window.",
+                    ["btn.maximize.tooltip"] = "Maximizes/restores the window."
                 };
 
             if (!_translations.ContainsKey(Language.Polish))
@@ -142,7 +145,10 @@ namespace YAMCL
                     ["dialog.update.newupdate"] = "Nowa wersja YAMCL jest dostępna!",
                     ["dialog.update.question"] = "Czy chcesz zaktualizować?",
                     ["dialog.settings.title"] = "Ustawienia",
-                    ["message.info.langrestart"] = "Proszę zrestartować YAMCL, aby w pełni zastosować ustawienia języku."
+                    ["message.info.langrestart"] = "Proszę zrestartować YAMCL, aby w pełni zastosować ustawienia języku.",
+                    ["btn.close.tooltip"] = "Zamyka aplikację.",
+                    ["btn.minimize.tooltip"] = "Minimalizuje okno.",
+                    ["btn.maximize.tooltip"] = "Maksymalizuje/przywróca okno."
                 };
 
             CurrentLanguage = GetLanguage();

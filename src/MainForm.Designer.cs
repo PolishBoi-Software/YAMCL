@@ -409,7 +409,7 @@
             // closeBtnTooltip
             // 
             this.closeBtnTooltip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(37)))));
-            this.closeBtnTooltip.Content = "Closes the application.";
+            this.closeBtnTooltip.Content = LanguageManager.GetTranslation("btn.close.tooltip");
             this.closeBtnTooltip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.closeBtnTooltip.TargetControl = this.closeBtn;
             this.closeBtnTooltip.TooltipPosition = CuoreUI.Components.cuiTooltipHover.Position.Top;
@@ -418,7 +418,7 @@
             // maxBtnTooltip
             // 
             this.maxBtnTooltip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(37)))));
-            this.maxBtnTooltip.Content = "Maximizes/restores the window.";
+            this.maxBtnTooltip.Content = LanguageManager.GetTranslation("btn.maximize.tooltip");
             this.maxBtnTooltip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.maxBtnTooltip.TargetControl = this.maxBtn;
             this.maxBtnTooltip.TooltipPosition = CuoreUI.Components.cuiTooltipHover.Position.Top;
@@ -427,7 +427,7 @@
             // miniBtnTooltip
             // 
             this.miniBtnTooltip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(37)))));
-            this.miniBtnTooltip.Content = "Minimizes the window.";
+            this.miniBtnTooltip.Content = LanguageManager.GetTranslation("btn.minimize.tooltip");
             this.miniBtnTooltip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.miniBtnTooltip.TargetControl = this.miniBtn;
             this.miniBtnTooltip.TooltipPosition = CuoreUI.Components.cuiTooltipHover.Position.Top;
