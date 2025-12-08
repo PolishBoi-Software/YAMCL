@@ -1,0 +1,20 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="YetAnotherMinecraftLauncher.App"
+             RequestedThemeVariant="Dark" xmlns:msg="https://github.com/xiyaowong/Message.Avalonia">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.Styles>
+        <FluentTheme />
+        <msg:Theme/>
+    </Application.Styles>
+
+    <Application.Resources>
+		<SolidColorBrush x:Key="PrimaryBackground">#1e1e2e</SolidColorBrush>
+        <SolidColorBrush x:Key="PrimaryBackgroundAlt">#181825</SolidColorBrush>
+        <SolidColorBrush x:Key="PrimaryText">#cdd6f4</SolidColorBrush>
+        <SolidColorBrush x:Key="PrimaryButton">#45475a</SolidColorBrush>
+        <SolidColorBrush x:Key="PrimaryTextBox">#11111b</SolidColorBrush>
+        <SolidColorBrush x:Key="PrimaryProgressBar">#a6e3a1</SolidColorBrush>
+    </Application.Resources>
+</Application>

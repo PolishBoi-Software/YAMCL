@@ -1,0 +1,45 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="YetAnotherMinecraftLauncher.InstanceDialog"
+        Title="Create a new instance" Background="{DynamicResource PrimaryBackground}" Foreground="{DynamicResource PrimaryText}"
+        CanMaximize="False" xmlns:core="using:CmlLib.Core.VersionMetadata" xmlns:modLoader="using:YetAnotherMinecraftLauncher.Core"
+        WindowStartupLocation="CenterOwner" CanResize="False" Width="500" Height="700">
+  <Grid Margin="5">
+	  <Grid.RowDefinitions>
+		  <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="*"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="*"/>
+          <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+
+      <TextBlock Margin="5" Grid.Row="0" FontSize="16" FontWeight="Bold" Text="Name:"/>
+      <TextBox Margin="5" x:Name="InstanceNameBox" Grid.Row="1" Background="{DynamicResource PrimaryTextBox}" Watermark="Instance Name"/>
+      <TextBlock Margin="5" Grid.Row="2" FontSize="16" FontWeight="Bold" Text="Version:"/>
+      
+      <ListBox Margin="5" x:Name="InstanceVersionBox" Foreground="{DynamicResource PrimaryText}" Background="{DynamicResource PrimaryBackgroundAlt}" Grid.Row="3">
+	      <ListBox.ItemTemplate>
+		      <DataTemplate x:DataType="core:IVersionMetadata">
+			      <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
+              </DataTemplate>
+          </ListBox.ItemTemplate>
+      </ListBox>
+
+      <TextBlock Margin="5" Grid.Row="4" FontSize="16" FontWeight="Bold" Text="Mod loader:"/>
+      
+      <ListBox Margin="5" x:Name="InstanceLoaderBox" Foreground="{DynamicResource PrimaryText}" Background="{DynamicResource PrimaryBackgroundAlt}" Grid.Row="5">
+		  <ListBox.ItemTemplate>
+		      <DataTemplate x:DataType="modLoader:ModLoader">
+			      <TextBlock Text="{Binding}" VerticalAlignment="Center"/>
+              </DataTemplate>
+          </ListBox.ItemTemplate>
+      </ListBox>
+
+      <Button x:Name="CreateButton" Click="CreateButton_Click" Content="Create" Background="{DynamicResource PrimaryButton}" Grid.Row="6" Margin="5"/>
+  </Grid>
+</Window>

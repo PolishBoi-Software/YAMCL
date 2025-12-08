@@ -1,0 +1,37 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="YetAnotherMinecraftLauncher.AccountPage">
+  <Grid Background="{DynamicResource PrimaryBackground}">
+      <Grid.ColumnDefinitions>
+		  <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+
+      <Grid.RowDefinitions>
+		  <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+
+	  <Image Grid.Column="0" x:Name="AvatarImage" Width="64" Height="64" Stretch="Fill"/>
+      <StackPanel VerticalAlignment="Center" Grid.Column="1">
+		    <TextBlock FontSize="18" FontWeight="Bold" Foreground="{DynamicResource PrimaryText}" Grid.Row="0" Margin="5" x:Name="UsernameText" Text="USERNAME"/>
+            <TextBlock Foreground="{DynamicResource PrimaryText}" Grid.Row="1" Margin="5" x:Name="UUIDText" Text="UUID"/>
+      </StackPanel>
+
+      <Button x:Name="SignInOutBtn" Foreground="{DynamicResource PrimaryText}" Click="SignInOutBtn_Click" Margin="5" Grid.Row="1" HorizontalContentAlignment="Center" Content="Sign in" Background="{DynamicResource PrimaryButton}"/>
+      <Grid Grid.Column="2" Grid.Row="2" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+          <Grid.RowDefinitions>
+			  <RowDefinition Height="*"/>
+              <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+
+          <Image Grid.Row="0" Width="128" Height="217" Stretch="Fill" x:Name="SkinImage"/>
+		  <Button Click="ChangeSkinBtn_Click" Grid.Row="1" x:Name="ChangeSkinBtn" Foreground="{DynamicResource PrimaryText}" HorizontalAlignment="Center" Background="{DynamicResource PrimaryButton}" Content="Change skin"/>
+      </Grid>
+  </Grid>
+</UserControl>

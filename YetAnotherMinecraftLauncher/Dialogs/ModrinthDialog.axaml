@@ -1,0 +1,45 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:models="using:Modrinth.Models"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="YetAnotherMinecraftLauncher.ModrinthDialog"
+        Icon="{x:Null}" Title="Search Modrinth for mods"
+        CanResize="False" WindowStartupLocation="CenterOwner"
+        Width="600" Height="800">
+  <Grid Background="{DynamicResource PrimaryBackground}">
+      <Grid.ColumnDefinitions>
+		  <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+
+      <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+		  <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="*"/>
+          <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+
+      <TextBlock Margin="5" FontSize="16" FontWeight="Bold" Grid.Row="0" x:Name="StatusText" Text="Please select a mod" Foreground="{DynamicResource PrimaryText}"/>
+      <ProgressBar ShowProgressText="True" Foreground="{DynamicResource PrimaryProgressBar}" Margin="5" x:Name="ProgBar" Grid.Row="1" Height="20"/>
+      <TextBox KeyDown="SearchBox_KeyDown" x:Name="SearchBox" Margin="5" Watermark="Search" Grid.Row="2"/>
+      <ListBox Grid.Column="0" Grid.Row="3" Background="{DynamicResource PrimaryBackgroundAlt}" x:Name="ModList" Margin="5">
+		  <ListBox.DataTemplates>
+			  <DataTemplate x:DataType="models:Project">
+				  <Grid>
+                      <Grid.RowDefinitions>
+						  <RowDefinition Height="Auto"/>
+                          <RowDefinition Height="Auto"/>
+                      </Grid.RowDefinitions>
+
+					  <TextBlock TextWrapping="Wrap" Text="{Binding Title}" Grid.Row="0" Foreground="{DynamicResource PrimaryText}" HorizontalAlignment="Left" FontSize="16" VerticalAlignment="Top" FontWeight="Bold"/>
+                      <TextBlock TextWrapping="Wrap" Text="{Binding Description}" Grid.Row="1" Foreground="{DynamicResource PrimaryText}" HorizontalAlignment="Left" FontSize="12" VerticalAlignment="Bottom"/>
+                  </Grid>
+              </DataTemplate>
+          </ListBox.DataTemplates>
+      </ListBox>
+
+      <Button Grid.Row="4" Click="InstallBtn_Click" x:Name="InstallBtn" Content="Install" Margin="5" Grid.Column="5" Background="{DynamicResource PrimaryButton}" Foreground="{DynamicResource PrimaryText}"/>
+  </Grid>
+</Window>

@@ -1,0 +1,65 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:core="using:YetAnotherMinecraftLauncher.Core"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="YetAnotherMinecraftLauncher.InstancePage">
+  <Grid Background="{DynamicResource PrimaryBackground}">
+      <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="*"/>
+          <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+
+      <Grid.ColumnDefinitions>
+		  <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="Auto"/>
+      </Grid.ColumnDefinitions>
+
+      <Grid Grid.Row="0">
+          <TextBlock TextAlignment="Left" HorizontalAlignment="Left" x:Name="StatusLabel" Text="Ready" Margin="5" FontSize="16" FontWeight="Bold"/>
+          <TextBlock TextAlignment="Center" HorizontalAlignment="Center" x:Name="ByteProgressLabel" Text="0 B / 0 B" Margin="5" FontSize="16" FontWeight="Bold"/>
+          <TextBlock TextAlignment="Right" HorizontalAlignment="Right" x:Name="TaskCountLabel" Text="[0/0]" Margin="5" FontSize="16" FontWeight="Bold"/>
+      </Grid>
+
+      <ProgressBar ShowProgressText="True" Foreground="{DynamicResource PrimaryProgressBar}" Margin="5" x:Name="ProgBar" Grid.Row="1" Height="20"/>
+
+      <ListBox Grid.Column="0" Foreground="{DynamicResource PrimaryText}" Background="{DynamicResource PrimaryBackgroundAlt}" Grid.Row="2" Margin="5" x:Name="InstanceBox">
+          <ListBox.ItemTemplate>
+              <DataTemplate x:DataType="core:Instance">
+                  <Grid>
+                      <Grid.ColumnDefinitions>
+						  <ColumnDefinition Width="Auto"/>
+                          <ColumnDefinition Width="*"/>
+                          <ColumnDefinition Width="Auto"/>
+                      </Grid.ColumnDefinitions>
+
+					  <TextBlock Grid.Column="0" VerticalAlignment="Center" FontSize="16" FontWeight="SemiBold" Text="{Binding Name}"/>
+                      <TextBlock Grid.Column="1" VerticalAlignment="Top" FontSize="10" FontWeight="Medium" Text="{Binding BaseVersion}"/>
+                      <TextBlock Grid.Column="2" VerticalAlignment="Center" Text="{Binding Loader}" FontWeight="Bold"/>
+                  </Grid>
+              </DataTemplate>
+          </ListBox.ItemTemplate>
+      </ListBox>
+
+      <Grid Grid.Row="3" Margin="5">
+		    <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+          <Button Click="LaunchButton_Click" x:Name="LaunchButton" Content="Launch" Margin="5" Grid.Column="5" Background="{DynamicResource PrimaryButton}" Foreground="{DynamicResource PrimaryText}"/>
+          <Button Click="KillButton_Click" x:Name="KillButton" Content="Kill" Margin="5" Grid.Column="4" Background="{DynamicResource PrimaryButton}" Foreground="{DynamicResource PrimaryText}"/>
+          <Button Click="CreateInstanceButton_Click" x:Name="CreateInstanceButton" Content="Create instance" Grid.Column="0" Margin="5" Background="{DynamicResource PrimaryButton}" Foreground="{DynamicResource PrimaryText}"/>
+          <Button Click="RemoveInstanceButton_Click" x:Name="RemoveInstanceButton" Content="Remove instance" Grid.Column="1" Margin="5" Background="{DynamicResource PrimaryButton}" Foreground="{DynamicResource PrimaryText}"/>
+          <Button Click="EditInstanceButton_Click" x:Name="EditInstanceButton" Content="Edit instance" Grid.Column="2" Margin="5" Background="{DynamicResource PrimaryButton}" Foreground="{DynamicResource PrimaryText}"/>
+          <Button Click="AddModButton_Click" x:Name="AddModButton" Content="Add a mod" Grid.Column="3" Margin="5" Background="{DynamicResource PrimaryButton}" Foreground="{DynamicResource PrimaryText}"/>
+      </Grid>
+  </Grid>
+</UserControl>

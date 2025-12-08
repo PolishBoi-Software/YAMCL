@@ -1,0 +1,19 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="YetAnotherMinecraftLauncher.SettingsPage" Background="{DynamicResource PrimaryBackground}"
+             xmlns:cfg="using:YetAnotherMinecraftLauncher.Core">
+  <Grid Margin="5">
+      <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+
+      <CheckBox x:Name="AutoSignInCheck" Grid.Row="0" Content="Auto sign in" VerticalContentAlignment="Center"/>
+      <CheckBox x:Name="AutoUpdateCheck" Grid.Row="1" Content="Auto update" VerticalContentAlignment="Center"/>
+      <CheckBox x:Name="DiscordRPCCheck" Grid.Row="2" Content="Discord RPC" VerticalContentAlignment="Center"/>
+  </Grid>
+</UserControl>
