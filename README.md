@@ -3,3 +3,6 @@ A Minecraft launcher that tries to be good.
 
 # Features
 - **Cross-Platform** (Thanks to [Avalonia](https://avaloniaui.net/))
+- Microsoft Authentication
+- Modding
+- Discord RPC
