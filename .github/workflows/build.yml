@@ -63,13 +63,13 @@ jobs:
           prerelease: false
 
       - name: "ownload Linux artifact"
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v6
         with:
           name: YAMCL-linux
           path: build/
 
       - name: "Download Windows artifact"
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v6
         with:
           name: YAMCL-win
           path: build/
