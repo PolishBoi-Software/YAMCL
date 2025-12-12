@@ -18,7 +18,8 @@ jobs:
           dotnet-version: "9.0.x"
 
       - name: "Prepare for release"
-        run: dotnet publish -c Release -r linux-x64 --self-contained true -o build/linux
+        working-directory: "YetAnotherMinecraftLauncher"
+        run: dotnet publish -c Release -r linux-x64 --self-contained true -o ../build/linux
 
       - name: "Upload as an artifact"
         uses: actions/upload-artifact@v6
@@ -37,7 +38,8 @@ jobs:
           dotnet-version: "9.0.x"
 
       - name: "Prepare for release"
-        run: dotnet publish -c Release -r win-x64 --self-contained true -o build/win
+        working-directory: "YetAnotherMinecraftLauncher"
+        run: dotnet publish -c Release -r win-x64 --self-contained true -o ../build/win
 
       - name: "Upload as an artifact"
         uses: actions/upload-artifact@v6
