@@ -22,10 +22,10 @@ jobs:
 
       - name: Build Linux
         working-directory: YetAnotherMinecraftLauncher
-        run: dotnet publish -c Release -r linux-x64 --self-contained true -o ../build/linux
+        run: dotnet publish -c Release -r linux-x64 --self-contained true -o ../YAMCL
 
       - name: Zip Linux build
-        run: zip -r build/YAMCL-linux.zip build/linux
+        run: zip -r build/YAMCL-linux.zip build/YAMCL
 
       - name: Upload Linux artifact
         uses: actions/upload-artifact@v6
@@ -46,16 +46,16 @@ jobs:
 
       - name: Build Windows
         working-directory: YetAnotherMinecraftLauncher
-        run: dotnet publish -c Release -r win-x64 --self-contained true -o ../build/win
+        run: dotnet publish -c Release -r win-x64 --self-contained true -o ../YAMCL
 
       - name: Zip Windows build
-        run: powershell Compress-Archive -Path build\win\* -DestinationPath build\YAMCL-win.zip
+        run: powershell Compress-Archive -Path build\win\* -DestinationPath YAMCL\YAMCL-win.zip
 
       - name: Upload Windows artifact
         uses: actions/upload-artifact@v6
         with:
           name: YAMCL-win
-          path: build/YAMCL-win.zip
+          path: YAMCL/YAMCL-win.zip
 
   release:
     needs: [build-linux, build-win]
@@ -76,13 +76,13 @@ jobs:
         uses: actions/download-artifact@v6
         with:
           name: YAMCL-linux
-          path: build/
+          path: YAMCL/
 
       - name: Download Windows artifact
         uses: actions/download-artifact@v6
         with:
           name: YAMCL-win
-          path: build/
+          path: YAMCL/
 
       - name: Upload Linux build to release
         uses: actions/upload-release-asset@v1
@@ -90,7 +90,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create-release.outputs.upload_url }}
-          asset_path: build/YAMCL-linux.zip
+          asset_path: YAMCL/YAMCL-linux.zip
           asset_name: YAMCL-linux.zip
           asset_content_type: application/zip
 
@@ -100,6 +100,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create-release.outputs.upload_url }}
-          asset_path: build/YAMCL-win.zip
+          asset_path: YAMCLYAMCL-win.zip
           asset_name: YAMCL-win.zip
           asset_content_type: application/zip
