@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v5
@@ -32,19 +32,19 @@ jobs:
       - name: Zip Linux build
         run: |
           cd publish
-          zip -r ../YAMCL.zip .
+          zip -r ../YAMCL-linux.zip .
 
       - name: Upload Linux artifact
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v4
         with:
           name: linux
-          path: YAMCL.zip
+          path: YAMCL-linux.zip
 
   build-win:
     runs-on: windows-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v5
@@ -61,25 +61,25 @@ jobs:
             -o ../publish
 
       - name: Zip Windows build
-        run: Compress-Archive publish\* YAMCL.zip
+        run: Compress-Archive publish\* YAMCL-win.zip
 
       - name: Upload Windows artifact
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v4
         with:
           name: windows
-          path: YAMCL.zip
+          path: YAMCL-win.zip
 
   release:
     needs: [build-linux, build-win]
     runs-on: ubuntu-latest
     steps:
       - name: Download artifacts
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v4
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           name: YAMCL ${{ github.ref_name }}
           files: |
-            linux/YAMCL.zip
-            windows/YAMCL.zip
+            linux/YAMCL-linux.zip
+            windows/YAMCL-win.zip
