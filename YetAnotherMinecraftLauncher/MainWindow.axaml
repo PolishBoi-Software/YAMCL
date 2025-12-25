@@ -17,7 +17,7 @@
             </StackPanel>
 
             <ContentControl Margin="5" x:Name="MainContent">
-                <TextBlock Text="Welcome!" FontSize="26" FontWeight="Bold"/>
+                <TextBlock Text="Welcome to YAMCL!" FontSize="26" FontWeight="Bold"/>
             </ContentControl>
         </DockPanel>
         <msg:MessageHost Name="DefaultHost" Position="BottomCenter"/>
