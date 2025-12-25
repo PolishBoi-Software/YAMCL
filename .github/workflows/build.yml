@@ -25,13 +25,13 @@ jobs:
         run: dotnet publish -c Release -r linux-x64 --self-contained true -o ../YAMCL
 
       - name: Zip Linux build
-        run: zip -r build/YAMCL-linux.zip build/YAMCL
+        run: zip -r YAMCL/YAMCL-linux.zip YAMCL
 
       - name: Upload Linux artifact
         uses: actions/upload-artifact@v6
         with:
           name: YAMCL-linux
-          path: build/YAMCL-linux.zip
+          path: YAMCL/YAMCL-linux.zip
 
   build-win:
     runs-on: windows-latest
@@ -49,7 +49,7 @@ jobs:
         run: dotnet publish -c Release -r win-x64 --self-contained true -o ../YAMCL
 
       - name: Zip Windows build
-        run: powershell Compress-Archive -Path build\win\* -DestinationPath YAMCL\YAMCL-win.zip
+        run: powershell Compress-Archive -Path YAMCL -DestinationPath YAMCL\YAMCL-win.zip
 
       - name: Upload Windows artifact
         uses: actions/upload-artifact@v6
