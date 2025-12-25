@@ -6,100 +6,80 @@ permissions:
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 jobs:
   build-linux:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Setup .NET 9
+      - name: Setup .NET
         uses: actions/setup-dotnet@v5
         with:
           dotnet-version: "9.0.x"
 
       - name: Build Linux
         working-directory: YetAnotherMinecraftLauncher
-        run: dotnet publish -c Release -r linux-x64 --self-contained true -o ../YAMCL
+        run: |
+          dotnet publish \
+            -c Release \
+            -r linux-x64 \
+            --self-contained true \
+            -o ../publish
 
       - name: Zip Linux build
-        run: zip -r YAMCL/YAMCL-linux.zip YAMCL
+        run: |
+          cd publish
+          zip -r ../YAMCL.zip .
 
       - name: Upload Linux artifact
         uses: actions/upload-artifact@v6
         with:
-          name: YAMCL-linux
-          path: YAMCL/YAMCL-linux.zip
+          name: linux
+          path: YAMCL.zip
 
   build-win:
     runs-on: windows-latest
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Setup .NET 9
+      - name: Setup .NET
         uses: actions/setup-dotnet@v5
         with:
           dotnet-version: "9.0.x"
 
       - name: Build Windows
         working-directory: YetAnotherMinecraftLauncher
-        run: dotnet publish -c Release -r win-x64 --self-contained true -o ../YAMCL
+        run: |
+          dotnet publish `
+            -c Release `
+            -r win-x64 `
+            --self-contained true `
+            -o ../publish
 
       - name: Zip Windows build
-        run: powershell Compress-Archive -Path YAMCL -DestinationPath YAMCL\YAMCL-win.zip
+        run: Compress-Archive publish\* YAMCL.zip
 
       - name: Upload Windows artifact
         uses: actions/upload-artifact@v6
         with:
-          name: YAMCL-win
-          path: YAMCL/YAMCL-win.zip
+          name: windows
+          path: YAMCL.zip
 
   release:
     needs: [build-linux, build-win]
     runs-on: ubuntu-latest
     steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v7
+
       - name: Create GitHub Release
-        id: create-release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ github.ref_name }}
-          release_name: YAMCL ${{ github.ref_name }}
-          draft: false
-          prerelease: false
-
-      - name: Download Linux artifact
-        uses: actions/download-artifact@v6
-        with:
-          name: YAMCL-linux
-          path: YAMCL/
-
-      - name: Download Windows artifact
-        uses: actions/download-artifact@v6
-        with:
-          name: YAMCL-win
-          path: YAMCL/
-
-      - name: Upload Linux build to release
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create-release.outputs.upload_url }}
-          asset_path: YAMCL/YAMCL-linux.zip
-          asset_name: YAMCL-linux.zip
-          asset_content_type: application/zip
-
-      - name: Upload Windows build to release
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create-release.outputs.upload_url }}
-          asset_path: YAMCLYAMCL-win.zip
-          asset_name: YAMCL-win.zip
-          asset_content_type: application/zip
+          name: YAMCL ${{ github.ref_name }}
+          files: |
+            linux/YAMCL.zip
+            windows/YAMCL.zip
